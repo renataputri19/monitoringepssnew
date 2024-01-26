@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/epss', function () {
+    return view('epss');
+});
+
+// Add this line to define the /sdi route
+Route::get('/sdi', function () {
+    return view('sdi');
+});
+
+// GET route for displaying the form
+Route::get('/file-upload', [FileController::class, 'showUploadForm'])->name('files.showUploadForm');
+
+// POST route for handling the form submission
+Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');

@@ -1,0 +1,22 @@
+.hero-section {
+    background-color: #F5F7FA;
+    color: #333;
+}
+
+/* File: public/css/app.css */
+/* EPSS Navbar Style */
+.epss-navbar {
+    background-color: #FFFFFF; /* White background */
+    /* Add more styles as per the image provided */
+}
+
+/* EPSS Hero Section Style */
+.epss-hero {
+    background-color: #F5F7FA; /* Light grey background */
+    /* Add more styles as per the hero section design */
+}
+
+/* Additional custom styles */
+html {
+    scroll-behavior: smooth;
+}
