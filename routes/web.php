@@ -32,7 +32,7 @@ Route::get('/sdi', function () {
 });
 
 // GET route for displaying the form
-Route::get('/file-upload', [FileController::class, 'showUploadForm'])->name('files.showUploadForm');
+// Route::get('/show-file', [FileController::class, 'showUploadForm'])->name('files.showUploadForm');
 
 // POST route for handling the form submission
 Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
