@@ -7,15 +7,11 @@ use App\Models\File;
 
 class FileController extends Controller
 {
-    // Method to display the form
-    // public function showUploadForm()
-    // {
-    //     return view('upload'); // This will be your Blade file with the form
-    // }
-    
     public function upload(Request $request)
     {
-        $file = $request->file('file');
+        $request->validate([
+            'files.*' => 'required|file',
+        ]);
 
         // Get the hidden fields
         $domain = $request->input('domain');
@@ -24,32 +20,21 @@ class FileController extends Controller
         $tingkat = $request->input('tingkat');
         $disetujui = $request->input('disetujui');
 
-        // Validate the file (optional, but recommended)
-        $this->validate($request, [
-            'file' => 'required|file|max:2048', // Adjust rules as needed
-        ]);
+        foreach ($request->file('files') as $file) {
+            $filename = $file->store('files', 'public'); // Stores file in the 'storage/app/public/files' directory
 
-        // Generate a unique filename
-        $filename = $file->hashName();
+            File::create([
+                'domain' => $domain, // You might want to pass this as another input or use the file name
+                'aspek' => $aspek,
+                'indikator' => $indikator,
+                'tingkat' => $tingkat,
+                'disetujui' => $disetujui,
+                'filename' => $filename,
+            ]);
+        }
 
-        // Store the file in the desired disk and directory
-        $path = $file->storeAs('public/uploads', $filename); // Adjust path as needed
-
-        $data = new File;
-
-        // Create a new model instance with the file information
-        $data->domain = $domain;
-        $data->aspek = $aspek;
-        $data->indikator = $indikator;
-        $data->tingkat = $tingkat;
-        $data->disetujui = $disetujui;
-        $data->filename = $filename;
-        // $data->path = $path;
-
-        // Save the model instance
-        $data->save();
+        
 
         return back()->with('success', 'Files have been uploaded successfully');
     }
 }
-

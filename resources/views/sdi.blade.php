@@ -28,7 +28,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="file" >Upload file:</label>
-                          <input type="file" id="file" name="file" required>
+                          <input type="file" name="files[]" class="form-control" id="sds2" multiple required>
                           <input type="hidden" name="domain" value="sdi">
                           <input type="hidden" name="aspek" value="Standar Data Statistik">
                           <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
@@ -40,7 +40,15 @@
 
                     <div>
                         <h1>file upload disini</h1>
-                        <div></div>
+                        <div>
+                            @foreach ($file as $item)
+                                <div>
+                                    <p>{{ $item->tingkat }}</p>
+                                    {{-- <img width="200" src="{{ asset('/storage/'.$item->filename) }}" alt=""> --}}
+                                    <a href="{{ asset('/storage/'.$item->filename) }}">Link</a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
 
@@ -50,7 +58,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="file" >Upload file:</label>
-                          <input type="file" id="file" name="file" required>
+                          <input type="file" name="files[]" class="form-control" id="sds3" multiple required>
                           <input type="hidden" name="domain" value="sdi">
                           <input type="hidden" name="aspek" value="Standar Data Statistik">
                           <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
@@ -70,7 +78,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="file" >Upload file:</label>
-                          <input type="file" id="file" name="file" required>
+                          <input type="file" name="files[]" class="form-control" id="sds4" multiple required>
                           <input type="hidden" name="domain" value="sdi">
                           <input type="hidden" name="aspek" value="Standar Data Statistik">
                           <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
@@ -90,7 +98,7 @@
                         @csrf
                         <div class="form-group">
                           <label for="file" >Upload file:</label>
-                          <input type="file" id="file" name="file" required>
+                          <input type="file" name="files[]" class="form-control" id="sds5" multiple required>
                           <input type="hidden" name="domain" value="sdi">
                           <input type="hidden" name="aspek" value="Standar Data Statistik">
                           <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">

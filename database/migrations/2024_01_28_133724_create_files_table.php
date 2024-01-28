@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('files', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
+            $table->id();
             $table->string('domain'); // Example
             $table->string('aspek'); // Example
             $table->string('indikator'); // Example
             $table->string('tingkat'); // Example
             $table->boolean('disetujui'); // Example
+            $table->string('filename'); // The name of the file in storage
+            $table->timestamps();
         });
+        
     }
 
     /**
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('files', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('files');
     }
 };

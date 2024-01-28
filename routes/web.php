@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SdiController;
 use App\Http\Controllers\FileController;
 
 /*
@@ -27,9 +28,10 @@ Route::get('/epss', function () {
 });
 
 // Add this line to define the /sdi route
-Route::get('/sdi', function () {
-    return view('sdi');
-});
+// Route::get('/sdi', function () {
+//     return view('sdi');
+// });
+Route::get('/sdi',[SdiController::class, 'sdi']);
 
 // GET route for displaying the form
 // Route::get('/show-file', [FileController::class, 'showUploadForm'])->name('files.showUploadForm');

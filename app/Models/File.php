@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
+    use HasFactory;
     protected $fillable = ['filename','domain','aspek','indikator','tingkat','disetujui'];
 }
