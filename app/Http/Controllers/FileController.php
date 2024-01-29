@@ -38,3 +38,4 @@ class FileController extends Controller
         return back()->with('success', 'Files have been uploaded successfully');
     }
 }
+

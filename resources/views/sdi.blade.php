@@ -15,129 +15,80 @@
         </div>
     </section>
 
-    <!-- Section for Tentang EPSS -->
+
     <section style="height: 900px; background-color: #FFFFFF;">
         <div class="container mt-4">
             <div class="row">
                 <!-- Left Column -->
                 <div class="col-md-6">
-                    <h2>Tingkat Kematangan Penerapan Standar Data Statistik (SDS)</h2>
-                    <h4>Tingkat 2</h4>
-                    <!-- Add your list items here -->
                     <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                          <label for="file" >Upload file:</label>
-                          <input type="file" name="files[]" class="form-control" id="sds2" multiple required>
-                          <input type="hidden" name="domain" value="sdi">
-                          <input type="hidden" name="aspek" value="Standar Data Statistik">
-                          <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
-                          <input type="hidden" name="tingkat" value="2">
-                          <input type="hidden" name="disetujui" value=0>
+                            <label for="indikator">Indikator:</label>
+                            <select id="indikator" name="indikator" class="form-control">
+                                <option value="sds1">Tingkat Kematangan Penerapan Standar Data Statistik (SDS)</option>
+                                <option value="sds2">Tingkat Kematangan Penerapan Metadata Statistik</option>
+                                <option value="sds3">Tingkat Kematangan Penerapan Interoperabilitas Data</option>
+                                <option value="sds4">Tingkat Kematangan Penerapan Kode Referensi</option>
+                            </select>
                         </div>
-                        <button type="submit">Upload</button>
-                    </form>
-
-                    <div>
-                        <h1>file upload disini</h1>
-                        <div>
-                            @foreach ($file as $item)
-                                <div>
-                                    <p>{{ $item->tingkat }}</p>
-                                    {{-- <img width="200" src="{{ asset('/storage/'.$item->filename) }}" alt=""> --}}
-                                    <a href="{{ asset('/storage/'.$item->filename) }}">Link</a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-
-
-                    <h4>Tingkat 3</h4>
-                    <!-- Add your list items here -->
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
                         <div class="form-group">
-                          <label for="file" >Upload file:</label>
-                          <input type="file" name="files[]" class="form-control" id="sds3" multiple required>
-                          <input type="hidden" name="domain" value="sdi">
-                          <input type="hidden" name="aspek" value="Standar Data Statistik">
-                          <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
-                          <input type="hidden" name="tingkat" value="3">
-                          <input type="hidden" name="disetujui" value=0>
+                            <label for="tingkat">Tingkat:</label>
+                            <select id="tingkat" name="tingkat" class="form-control">
+                                <option value="tingkat1">Tingkat 1</option>
+                                <option value="tingkat2">Tingkat 2</option>
+                                <option value="tingkat3">Tingkat 3</option>
+                                <option value="tingkat4">Tingkat 4</option>
+                                <option value="tingkat5">Tingkat 5</option>
+                            </select>
                         </div>
-                        <button type="submit">Upload</button>
-                    </form>
-
-                    <div>
-                        <h1>file upload disini</h1>
-                    </div>
-
-                    <h4>Tingkat 4</h4>
-                    <!-- Add your list items here -->
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
                         <div class="form-group">
-                          <label for="file" >Upload file:</label>
-                          <input type="file" name="files[]" class="form-control" id="sds4" multiple required>
-                          <input type="hidden" name="domain" value="sdi">
-                          <input type="hidden" name="aspek" value="Standar Data Statistik">
-                          <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
-                          <input type="hidden" name="tingkat" value="4">
-                          <input type="hidden" name="disetujui" value=0>
+                            <label for="file">Upload file:</label>
+                            <input type="file" name="files[]" class="form-control" id="file-sds" multiple required>
                         </div>
-                        <button type="submit">Upload</button>
+                        <input type="hidden" name="domain" value="sdi">
+                        <input type="hidden" name="aspek" value="Standar Data Statistik">
+                        <input type="hidden" name="disetujui" value="0">
+                        <button type="submit" class="btn btn-primary mt-2">Upload</button>
                     </form>
-
-                    <div>
-                        <h1>file upload disini</h1>
-                    </div>
-
-                    <h4>Tingkat 5</h4>
-                    <!-- Add your list items here -->
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                          <label for="file" >Upload file:</label>
-                          <input type="file" name="files[]" class="form-control" id="sds5" multiple required>
-                          <input type="hidden" name="domain" value="sdi">
-                          <input type="hidden" name="aspek" value="Standar Data Statistik">
-                          <input type="hidden" name="indikator" value="Tingkat Kematangan Penerapan Standar Data Statistik (SDS)">
-                          <input type="hidden" name="tingkat" value="5">
-                          <input type="hidden" name="disetujui" value=0>
-                        </div>
-                        <button type="submit">Upload</button>
-                    </form>
-
-                    <div>
-                        <h1>file upload disini</h1>
-                    </div>
-                </div>
-                
-                <!-- Column 2 -->
-                {{-- <div class="col-md-6">
-                    <h3>Tingkat Kematangan Penerapan Metadata Statistik</h3>
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @for ($i = 1; $i <= 5; $i++)
-                            <div class="mb-3">
-                                <!-- Assuming you have a separate title input for each file -->
-                                <input type="text" name="titles[]" class="form-control" placeholder="Title for Tingkat {{ $i }}">
-                                <input type="file" name="files[]" class="form-control" multiple>
+    
+                    {{-- <div class="uploaded-files mt-4">
+                        <h2>File yang Diupload</h2>
+                        @foreach ($file as $item)
+                            <div class="file-item">
+                                <p>{{ $item->tingkat }}</p>
+                                <a href="{{ asset('/storage/'.$item->filename) }}">Download File</a>
                             </div>
-                        @endfor
-                        <button type="submit" class="btn btn-primary">Upload Files</button>
-                    </form>
-                </div> --}}
-
-
-
-
-
+                        @endforeach
+                    </div> --}}
+                </div>
             </div>
         </div>
-        
     </section>
+    
+    <div class="container">
+        @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
+            <div class="row">
+                <div class="col">
+                    <h2>{{ $indikatorTitles[$indikator] }}</h2> {{-- Make sure to define $indikatorTitles array with proper titles --}}
+                </div>
+                @foreach(['tingkat1', 'tingkat2', 'tingkat3', 'tingkat4', 'tingkat5'] as $tingkat)
+                    <div class="col">
+                        <h2>{{ $tingkatTitles[$tingkat]  }}</h2>
+                        @if(isset($files[$indikator][$tingkat]))
+                            @foreach($files[$indikator][$tingkat] as $file)
+                                <a href="{{ asset('/storage/'.$file->filename) }}">Download File</a><br>
+                            @endforeach
+                        @else
+                            <span>No files</span>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
+    </div>
 
+    
     {{-- <!-- Section for Romantik -->
     <section style="height: 589px; background-color: #F5F7FA;">
         <h1>Romantik</h1>
@@ -161,6 +112,5 @@
         <h1>Hubungi Kami</h1>
         <!-- Other Hubungi Kami content goes here -->
     </section> --}}
-
 
 @endsection
