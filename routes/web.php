@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SdiController;
+use App\Http\Controllers\EpssController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +21,16 @@ use App\Http\Controllers\FileController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/',[HomeController::class, 'home']);
 
-Route::get('/epss', function () {
-    return view('epss');
-});
+
+Route::get('/epss',[EpssController::class, 'epss']);
+// Route::get('/epss', function () {
+//     return view('epss');
+// });
 
 // Add this line to define the /sdi route
 // Route::get('/sdi', function () {
