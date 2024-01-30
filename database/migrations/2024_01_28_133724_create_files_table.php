@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('aspek'); // Example
             $table->string('indikator'); // Example
             $table->string('tingkat'); // Example
-            $table->boolean('disetujui'); // Example
+            $table->boolean('disetujui')->nullable()->default(null);
             $table->string('filename'); // The name of the file in storage
             $table->timestamps();
         });

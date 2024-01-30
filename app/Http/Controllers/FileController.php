@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth; // Use Auth facade
 
 use Illuminate\Http\Request;
 use App\Models\File;
@@ -37,5 +38,35 @@ class FileController extends Controller
 
         return back()->with('success', 'Files have been uploaded successfully');
     }
+
+    public function approve(Request $request, $id)
+    {
+        if (Auth::user()->admin) {
+            $file = File::findOrFail($id);
+            $file->disetujui = true;
+            $file->reason = $request->input('reason', null); // Store the reason
+            $file->save();
+    
+            return back()->with('success', 'File has been approved.');
+        }
+    
+        return back()->with('error', 'Aksi tidak diizinkan.');
+    }
+    
+    public function disapprove(Request $request, $id)
+{
+    if (Auth::user()->admin) {
+        $file = File::findOrFail($id);
+        $file->disetujui = false;
+        $file->reason = $request->input('reason'); // Store the reason
+        $file->save();
+
+        return back()->with('success', 'File disapproval has been recorded.');
+    }
+    
+        return back()->with('error', 'Aksi tidak diizinkan.');
+    }
+    
+    
 }
 

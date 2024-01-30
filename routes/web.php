@@ -52,4 +52,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Handle login attempt
 Route::post('/login', [LoginController::class, 'login']);
 
+// In your routes/web.php file
+Route::post('/files/{id}/approve', [FileController::class, 'approve'])->name('file.approve');
+Route::post('/files/{id}/disapprove', [FileController::class, 'disapprove'])->name('file.disapprove');
 
