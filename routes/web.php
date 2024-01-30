@@ -5,6 +5,7 @@ use App\Http\Controllers\SdiController;
 use App\Http\Controllers\EpssController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,12 @@ Route::get('/sdi',[SdiController::class, 'sdi']);
 
 // POST route for handling the form submission
 Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
+
+
+// Show login form
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+// Handle login attempt
+Route::post('/login', [LoginController::class, 'login']);
+
+
