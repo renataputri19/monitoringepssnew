@@ -74,36 +74,31 @@
                 @foreach(['tingkat1', 'tingkat2', 'tingkat3', 'tingkat4', 'tingkat5'] as $tingkat)
                     <div class="col">
                         <h3>{{ $tingkatTitles[$tingkat] }}</h3>
-                        @if(isset($files[$indikator][$tingkat]))
-                            {{-- Inside your files loop --}}
+                        @if(isset($files[$indikator][$tingkat]) && count($files[$indikator][$tingkat]) > 0)
                             @foreach($files[$indikator][$tingkat] as $file)
                                 <div>
                                     <a href="{{ asset('/storage/'.$file->filename) }}">Download File</a><br>
                                     {{-- Menampilkan status --}}
-                                    @if(is_null($file->disetujui))
-                                        <span>Diperiksa</span>
-                                    @else
-                                        <span>{{ $file->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</span>
-                                        @if(!is_null($file->reason)) {{-- Cek jika ada alasan dan tampilkan --}}
-                                            <p>Alasan: {{ $file->reason }}</p>
+                                    <span>
+                                        @if($file->disetujui === null)
+                                            Diperiksa
+                                        @elseif($file->disetujui)
+                                            Disetujui
+                                            @if($file->reason) {{-- Only display reason if it's not null --}}
+                                                <p>Alasan: {{ $file->reason }}</p>
+                                            @endif
+                                        @else
+                                            Tidak Disetujui
+                                            @if($file->reason) {{-- Only display reason if it's not null --}}
+                                                <p>Alasan: {{ $file->reason }}</p>
+                                            @endif
                                         @endif
-                                    @endif
-                                    {{-- Show approve/disapprove buttons only for admins --}}
+                                    </span>
                                     @if(Auth::check() && Auth::user()->admin)
-                                        <form method="post" action="{{ route('file.approve', $file->id) }}">
-                                            @csrf
-                                            <textarea name="reason" placeholder="Enter reason for approval (optional)"></textarea>
-                                            <button type="submit" class="btn btn-success">Approve</button>
-                                        </form>
-                                        <form method="post" action="{{ route('file.disapprove', $file->id) }}">
-                                            @csrf
-                                            <textarea name="reason" placeholder="Enter reason for disapproval" required></textarea>
-                                            <button type="submit" class="btn btn-warning">Disapprove</button>
-                                        </form>
+                                        {{-- Admin approval/disapproval forms here --}}
                                     @endif
                                 </div>
                             @endforeach
-
                         @else
                             <span>No files</span>
                         @endif
@@ -112,6 +107,7 @@
             </div>
         @endforeach
     </div>
+    
     
 
     

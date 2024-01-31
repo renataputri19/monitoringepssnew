@@ -54,7 +54,7 @@ class FileController extends Controller
     }
     
     public function disapprove(Request $request, $id)
-{
+    {
     if (Auth::user()->admin) {
         $file = File::findOrFail($id);
         $file->disetujui = false;
@@ -62,7 +62,7 @@ class FileController extends Controller
         $file->save();
 
         return back()->with('success', 'File disapproval has been recorded.');
-    }
+        }
     
         return back()->with('error', 'Aksi tidak diizinkan.');
     }
