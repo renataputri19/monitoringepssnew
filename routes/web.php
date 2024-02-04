@@ -6,6 +6,9 @@ use App\Http\Controllers\EpssController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndikatorApprovalController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +59,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/files/{id}/approve', [FileController::class, 'approve'])->name('file.approve');
 Route::post('/files/{id}/disapprove', [FileController::class, 'disapprove'])->name('file.disapprove');
 
+Route::get('/dashboard', [DashboardController::class, 'calculateSdiScore'])->name('dashboard');
+
+
+Route::post('/indikator-approval', [IndikatorApprovalController::class, 'approve'])->name('indikator.approve');

@@ -67,9 +67,48 @@
     
     <div class="container">
         @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
+            
             <div class="row">
                 <div class="col">
                     <h2>{{ $indikatorTitles[$indikator] }}</h2>
+                    {{-- Check if the indikator is already approved or not --}}
+                    @php
+                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                    @endphp
+                    
+                    @if($indikatorApproval)
+                        <p>Status: {{ $indikatorApproval->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</p>
+                        
+                        <p>Tingkat: {{ $indikatorApproval->tingkat }}</p>
+                        
+                        <p>Alasan: {{ $indikatorApproval->reason ?? 'N/A' }}</p>
+                    
+                        <form action="{{ route('indikator.approve') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="indikator" value="{{ $indikator }}">
+                            <input type="hidden" name="domain" value="sdi">
+                            <input type="hidden" name="aspek" value="Standar Data Statistik">
+                            {{-- Approval/Disapproval Selection --}}
+                            <div>
+                                <input type="radio" id="approve" name="disetujui" value="1" checked>
+                                <label for="approve">Setujui</label><br>
+                                <input type="radio" id="disapprove" name="disetujui" value="0">
+                                <label for="disapprove">Tidak Setujui</label><br>
+                            </div>
+                            {{-- Tingkat Selection --}}
+                            <select name="tingkat">
+                                <option value="1">Tingkat 1</option>
+                                <option value="2">Tingkat 2</option>
+                                <option value="3">Tingkat 3</option>
+                                <option value="4">Tingkat 4</option>
+                                <option value="5">Tingkat 5</option>
+                                {{-- ... other options ... --}}
+                            </select>
+                            <textarea name="reason" placeholder="Alasan (opsional)"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    @endif
+                    
                 </div>
                 @foreach(['tingkat1', 'tingkat2', 'tingkat3', 'tingkat4', 'tingkat5'] as $tingkat)
                     <div class="col">
@@ -95,7 +134,16 @@
                                         @endif
                                     </span>
                                     @if(Auth::check() && Auth::user()->admin)
-                                        {{-- Admin approval/disapproval forms here --}}
+                                    <form method="post" action="{{ route('file.approve', $file->id) }}">
+                                        @csrf
+                                        <textarea name="reason" placeholder="Enter reason for approval (optional)"></textarea>
+                                        <button type="submit" class="btn btn-success">Approve</button>
+                                    </form>
+                                    <form method="post" action="{{ route('file.disapprove', $file->id) }}">
+                                        @csrf
+                                        <textarea name="reason" placeholder="Enter reason for disapproval" required></textarea>
+                                        <button type="submit" class="btn btn-warning">Disapprove</button>
+                                    </form>
                                     @endif
                                 </div>
                             @endforeach
@@ -105,6 +153,9 @@
                     </div>
                 @endforeach
             </div>
+
+            
+            
         @endforeach
     </div>
     
