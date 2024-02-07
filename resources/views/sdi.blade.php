@@ -115,9 +115,19 @@
                         <h3>{{ $tingkatTitles[$tingkat] }}</h3>
                         @if(isset($files[$indikator][$tingkat]) && count($files[$indikator][$tingkat]) > 0)
                             @foreach($files[$indikator][$tingkat] as $file)
+
+                                
                                 <div>
                                     <a href="{{ asset('/storage/'.$file->filename) }}">Download File</a><br>
                                     {{-- Menampilkan status --}}
+                                    <form action="{{ route('files.destroy', $file->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this file?');">
+                                            Delete
+                                        </button>
+                                    </form>
+
                                     <span>
                                         @if($file->disetujui === null)
                                             Diperiksa
@@ -133,6 +143,8 @@
                                             @endif
                                         @endif
                                     </span>
+
+                                    
                                     @if(Auth::check() && Auth::user()->admin)
                                     <form method="post" action="{{ route('file.approve', $file->id) }}">
                                         @csrf

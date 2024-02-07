@@ -10,8 +10,9 @@ class LoginController extends Controller
     // Show the login form
     public function showLoginForm()
     {
-        return view('login'); // Ensure this view path is correct
+        return view('login'); // Return the login view if the user is not authenticated
     }
+    
 
     // Handle the login request
     public function login(Request $request)
@@ -26,7 +27,7 @@ class LoginController extends Controller
         // Use Auth::attempt() to authenticate
         if (Auth::attempt($credentials)) {
             // Authentication was successful...
-            return redirect()->intended('epss'); // Redirect to intended or a specified default
+            return redirect()->intended('dashboard'); // Redirect to intended or a specified default
         }
 
         // Authentication failed...

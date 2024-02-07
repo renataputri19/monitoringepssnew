@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth; // Use Auth facade
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -67,6 +68,19 @@ class FileController extends Controller
         return back()->with('error', 'Aksi tidak diizinkan.');
     }
     
-    
+    public function destroy($id)
+    {
+        // Add authorization check if necessary to ensure only allowed users can delete
+        
+        // Delete the file from storage
+        $file = File::findOrFail($id);
+
+        // Delete the file record from the database
+        Storage::delete('public/' . $file->filename);
+        $file->delete();
+
+        return back()->with('success', 'File deleted successfully.');
+    }
+
 }
 

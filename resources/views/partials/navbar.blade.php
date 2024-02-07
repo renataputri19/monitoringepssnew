@@ -24,6 +24,13 @@
                 <a href="{{ url('/kelembagaan') }}" class="text-gray-700 hover:text-green-600">Kelembagaan</a>
                 <a href="{{ url('/statistik-nasional') }}" class="text-green-600 hover:text-green-800">Statistik Nasional</a>
                 <a href="{{ url('/dashboard') }}" class="text-green-600 hover:text-green-800">Dashboard Perencanaan</a>
+                @if(Auth::check())
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+                @endif
+            
             </div>
         @endif
 

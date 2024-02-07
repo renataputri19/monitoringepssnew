@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler
 {
@@ -27,4 +29,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof NotFoundHttpException) {
+            if (Auth::check()) {
+                // Redirect authenticated users to the dashboard or another appropriate page
+                return redirect()->route('dashboard');
+            } else {
+                // Redirect guests to the login page
+                return redirect()->route('login');
+            }
+        }
+    
+        return parent::render($request, $exception);
+    }
+    
 }
