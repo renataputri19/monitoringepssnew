@@ -3,77 +3,79 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    <!-- SDI Score Section -->
+    <section class="mb-4">
+        <h2>SDI Score: {{ $sdiData['sdiScore'] }}</h2>
+        <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas>
+    </section>
 
-    <!-- Other dashboard elements -->
+    <!-- KD Score Section -->
+    <section class="mb-4">
+        <h2>KD Score: {{ $kdData['kdScore'] }}</h2>
+        <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas>
+    </section>
 
-    <div class="sdi-dashboard-number">
-        <h2>SDI Score: {{ $sdiScore }}</h2>
-    </div>
-    
-    <div style="width:500px; height:500px;">
-        <canvas id="sdiRadarChart"></canvas>
-    </div>
-    
+    <!-- More sections for other domains... -->
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Initialize Radar Charts -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('sdiRadarChart').getContext('2d');
-
-            // Convert long labels to multi-line labels
-            var chartLabels = @json(array_values($indikatorTitles)).map(function(label) {
-                return label.split(' '); // Split each title by space to create multi-line labels
-            });
-
-            var sdiRadarChart = new Chart(ctx, {
+            // SDI Radar Chart
+            new Chart(document.getElementById('sdiRadarChart').getContext('2d'), {
                 type: 'radar',
                 data: {
-                    labels: chartLabels,
+                    labels: @json(array_values($sdiData['indikatorTitles'])),
                     datasets: [{
-                        label: 'Tingkat',
-                        data: @json($data),
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        label: 'SDI Tingkat',
+                        data: @json($sdiData['data']),
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                        borderColor: 'rgba(0, 123, 255, 1)',
                         borderWidth: 1
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    layout: {
-                        padding: { // Adjust padding as needed
-                            top: 40,
-                            right: 40,
-                            bottom: 40,
-                            left: 40
-                        }
-                    },
                     scales: {
                         r: {
-                            angleLines: {
-                                display: true
-                            },
                             min: 0,
                             max: 5,
                             ticks: {
-                                stepSize: 1,
-                                backdropColor: 'transparent'
+                                stepSize: 1
                             }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        tooltip: {
-                            enabled: true,
                         }
                     }
                 }
             });
+
+            // KD Radar Chart
+            new Chart(document.getElementById('kdRadarChart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: @json(array_values($kdData['indikatorTitles'])),
+                    datasets: [{
+                        label: 'KD Tingkat',
+                        data: @json($kdData['data']),
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initialize more charts for other domains as needed...
         });
-
     </script>
-    
-
 @endsection
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

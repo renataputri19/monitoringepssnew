@@ -30,7 +30,7 @@
                     <button type="submit">Logout</button>
                 </form>
                 @endif
-            
+        
             </div>
         @endif
 

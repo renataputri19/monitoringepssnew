@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Monitoring EPSS</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <header style="height: 59px; background-color: #FFFFFF;">
@@ -17,6 +18,6 @@
         @include('partials.footer')
     </footer>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    
 </body>
 </html>

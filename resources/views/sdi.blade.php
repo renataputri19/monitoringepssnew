@@ -3,6 +3,33 @@
 
 @section('title', 'Prinsip SDI')
 
+<!-- Custom styles for carousel controls and indicators -->
+<style>
+    .carousel-control-prev,
+    .carousel-control-next {
+      filter: invert(100%); /* Makes the controls white */
+      z-index: 2; /* Ensures they are above other content */
+      width: 4%; /* Adjust the clickable area */
+    }
+  
+    /* Position the controls inside the carousel boundaries */
+    .carousel-control-prev {
+      left: 10px;
+    }
+  
+    .carousel-control-next {
+      right: 10px;
+    }
+  
+    /* Style for the indicators */
+    .carousel-indicators li {
+      background-color: #fff;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+</style>
+
 @section('content')
     <!-- Hero Section for Beranda -->
     <section style="height: 589px; background-color: #F5F7FA;">
@@ -26,22 +53,20 @@
                         <div class="form-group">
                             <label for="indikator">Indikator:</label>
                             <select id="indikator" name="indikator" class="form-control">
-                                <option value="sds1">Tingkat Kematangan Penerapan Standar Data Statistik (SDS)</option>
-                                <option value="sds2">Tingkat Kematangan Penerapan Metadata Statistik</option>
-                                <option value="sds3">Tingkat Kematangan Penerapan Interoperabilitas Data</option>
-                                <option value="sds4">Tingkat Kematangan Penerapan Kode Referensi</option>
+                                @foreach($indikatorTitles as $key => $title)
+                                    <option value="{{ $key }}">{{ $title }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="tingkat">Tingkat:</label>
                             <select id="tingkat" name="tingkat" class="form-control">
-                                <option value="tingkat1">Tingkat 1</option>
-                                <option value="tingkat2">Tingkat 2</option>
-                                <option value="tingkat3">Tingkat 3</option>
-                                <option value="tingkat4">Tingkat 4</option>
-                                <option value="tingkat5">Tingkat 5</option>
+                                @foreach($tingkatTitles as $key => $title)
+                                    <option value="{{ $key }}">{{ $title }}</option>
+                                @endforeach
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="file">Upload file:</label>
                             <input type="file" name="files[]" class="form-control" id="file-sds" multiple required>
@@ -65,113 +90,88 @@
         </div>
     </section>
     
-    <div class="container">
-        @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
-            
-            <div class="row">
-                <div class="col">
-                    <h2>{{ $indikatorTitles[$indikator] }}</h2>
-                    {{-- Check if the indikator is already approved or not --}}
-                    @php
-                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
-                    @endphp
-                    
-                    @if($indikatorApproval)
-                        <p>Status: {{ $indikatorApproval->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</p>
-                        
-                        <p>Tingkat: {{ $indikatorApproval->tingkat }}</p>
-                        
-                        <p>Alasan: {{ $indikatorApproval->reason ?? 'N/A' }}</p>
-                    
-                        <form action="{{ route('indikator.approve') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="indikator" value="{{ $indikator }}">
-                            <input type="hidden" name="domain" value="sdi">
-                            <input type="hidden" name="aspek" value="Standar Data Statistik">
-                            {{-- Approval/Disapproval Selection --}}
-                            <div>
-                                <input type="radio" id="approve" name="disetujui" value="1" checked>
-                                <label for="approve">Setujui</label><br>
-                                <input type="radio" id="disapprove" name="disetujui" value="0">
-                                <label for="disapprove">Tidak Setujui</label><br>
-                            </div>
-                            {{-- Tingkat Selection --}}
-                            <select name="tingkat">
-                                <option value="1">Tingkat 1</option>
-                                <option value="2">Tingkat 2</option>
-                                <option value="3">Tingkat 3</option>
-                                <option value="4">Tingkat 4</option>
-                                <option value="5">Tingkat 5</option>
-                                {{-- ... other options ... --}}
-                            </select>
-                            <textarea name="reason" placeholder="Alasan (opsional)"></textarea>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    @endif
-                    
-                </div>
-                @foreach(['tingkat1', 'tingkat2', 'tingkat3', 'tingkat4', 'tingkat5'] as $tingkat)
-                    <div class="col">
-                        <h3>{{ $tingkatTitles[$tingkat] }}</h3>
-                        @if(isset($files[$indikator][$tingkat]) && count($files[$indikator][$tingkat]) > 0)
-                            @foreach($files[$indikator][$tingkat] as $file)
+    
 
-                                
-                                <div>
-                                    <a href="{{ asset('/storage/'.$file->filename) }}">Download File</a><br>
-                                    {{-- Menampilkan status --}}
-                                    <form action="{{ route('files.destroy', $file->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this file?');">
-                                            Delete
-                                        </button>
-                                    </form>
+    <div class="container mt-3">
+        <div id="indikatorCarousel" class="carousel slide" data-ride="carousel">
+           <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                    <li data-target="#indikatorCarousel" data-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
 
-                                    <span>
-                                        @if($file->disetujui === null)
-                                            Diperiksa
-                                        @elseif($file->disetujui)
-                                            Disetujui
-                                            @if($file->reason) {{-- Only display reason if it's not null --}}
-                                                <p>Alasan: {{ $file->reason }}</p>
-                                            @endif
-                                        @else
-                                            Tidak Disetujui
-                                            @if($file->reason) {{-- Only display reason if it's not null --}}
-                                                <p>Alasan: {{ $file->reason }}</p>
-                                            @endif
-                                        @endif
-                                    </span>
-
-                                    
-                                    @if(Auth::check() && Auth::user()->admin)
-                                    <form method="post" action="{{ route('file.approve', $file->id) }}">
-                                        @csrf
-                                        <textarea name="reason" placeholder="Enter reason for approval (optional)"></textarea>
-                                        <button type="submit" class="btn btn-success">Approve</button>
-                                    </form>
-                                    <form method="post" action="{{ route('file.disapprove', $file->id) }}">
-                                        @csrf
-                                        <textarea name="reason" placeholder="Enter reason for disapproval" required></textarea>
-                                        <button type="submit" class="btn btn-warning">Disapprove</button>
-                                    </form>
-                                    @endif
+            <!-- Controls -->
+            <div class="carousel-controls">
+                <a class="carousel-control-prev" href="#indikatorCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#indikatorCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
+                        <div class="row mb-4">
+                            @foreach($indikatorChunk as $index => $indikator)
+                                @php
+                                $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                                // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
+                                @endphp
+                
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
+                                            @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
+                                        
+                                            <div class="row my-3">
+                                                <div class="col-md-6">
+                                                    {{-- <h3>Files Tingkat 1-2</h3> --}}
+                                                    @foreach(['tingkat1', 'tingkat2'] as $tingkat)
+                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                                    @endforeach
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {{-- <h3>Files Tingkat 3-5</h3> --}}
+                                                    @foreach(['tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endforeach
-                        @else
-                            <span>No files</span>
-                        @endif
+                        </div>
                     </div>
                 @endforeach
             </div>
-
             
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#indikatorCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#indikatorCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
             
-        @endforeach
+        </div>
     </div>
     
-    
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
     
     {{-- <!-- Section for Romantik -->

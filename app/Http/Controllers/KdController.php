@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 
-
-class SdiController extends Controller
+class KdController extends Controller
 {
     protected $indikatorTitles = [
-        'sds1' => 'Tingkat Kematangan Penerapan Standar Data Statistik (SDS)',
-        'sds2' => 'Tingkat Kematangan Penerapan Metadata Statistik',
-        'sds3' => 'Tingkat Kematangan Penerapan Interoperabilitas Data',
-        'sds4' => 'Tingkat Kematangan Penerapan Kode Referensi',
+        'kd1' => 'Tingkat Kematangan Relevansi Data Terhadap Pengguna',
+        'kd2' => 'Tingkat Kematangan Proses Identifikasi Kebutuhan Data',
+        'kd3' => 'Tingkat Kematangan Penilaian Akurasi Data',
+        'kd4' => 'Tingkat Kematangan Penjaminan Aktualitas Data',
+        'kd5' => 'Tingkat Kematangan Pemantauan Ketepatan Waktu Diseminasi',
+        'kd6' => 'Tingkat Kematangan Ketersediaan Data untuk Pengguna Data',
+        'kd7' => 'Tingkat Kematangan Akses Media Penyebarluasan Data',
+        'kd8' => 'Tingkat Kematangan Penyediaan Format Data',
+        'kd9' => 'Tingkat Kematangan Keterbandingan Data',
+        'kd10' => 'Tingkat Kematangan Konsistensi Statistik'
     ];
 
     protected $tingkatTitles = [
@@ -23,16 +28,17 @@ class SdiController extends Controller
         'tingkat5' => 'Tingkat 5',
     ];
 
-    public function sdi(){
+    public function kd(){
         $files = File::all()->groupBy(['indikator', 'tingkat']);
-        return view('sdi', [
+        
+        return view('kd', [
             'files' => $files, 
             'indikatorTitles' => $this->indikatorTitles,
             'tingkatTitles' => $this->tingkatTitles
         ]);
     }
 
-    public function calculateSdiScore()
+    public function calculatekdScore()
     {
         $baseValue = 1; // Base value for each indikator
         $totalScore = 0;
@@ -56,14 +62,13 @@ class SdiController extends Controller
         }
     
         // Final SDI score, rounded to 2 decimal places
-        $sdiScore = round($totalScore,2);
+        $kdScore = round($totalScore,2);
     
         // Pass the labels and data to the view
         return [
-            'sdiScore' => $sdiScore,
+            'kdScore' => $kdScore,
             'indikatorTitles' => $this->indikatorTitles,
             'data' => $data
         ];
     }
 }
-

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KdController;
 use App\Http\Controllers\SdiController;
 use App\Http\Controllers\EpssController;
 use App\Http\Controllers\FileController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndikatorApprovalController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/epss',[EpssController::class, 'epss'])->name('epss');
 
     Route::get('/sdi',[SdiController::class, 'sdi'])->name('sdi');
-    // Route::get('/kualitas-data',[KualitasDataController::class, 'kualitas-data']);
+    Route::get('/kualitas-data',[KdController::class, 'kd']);
     // Route::get('/proses-bisnis-statistik',[ProsesBisnisStatistikController::class, 'proses-bisnis-statistik']);
     // Route::get('/kelembagaan',[KelembagaanController::class, 'kelembagaan']);
     // Route::get('/statistik-nasional',[StatistikNasionalController::class, 'statistik-nasional']);
@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/files/{id}/disapprove', [FileController::class, 'disapprove'])->name('file.disapprove');
     Route::delete('/files/{file}', [FileController::class, 'destroy'])->name('files.destroy');
     
-    Route::get('/dashboard', [DashboardController::class, 'calculateSdiScore'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'calculateScores'])->name('dashboard');
     
     
     Route::post('/indikator-approval', [IndikatorApprovalController::class, 'approve'])->name('indikator.approve');
