@@ -1,0 +1,28 @@
+/* dashboard.css */
+/* Ensure you link this CSS file in your blade layout using the link tag */
+
+/* General dashboard styling */
+.dashboard-section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Styling for the canvas elements */
+  .dashboard-canvas {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    margin: auto;
+  }
+  
+  /* Customizing the look and feel of headers */
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  
+  
+  /* Bootstrap utility classes can be applied directly in the blade file */
+  /* For example, you can add classes like 'text-center', 'mb-4', 'bg-light' to your elements */
+  

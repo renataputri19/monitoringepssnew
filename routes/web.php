@@ -13,6 +13,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelembagaanController;
 use App\Http\Controllers\IndikatorApprovalController;
+use App\Http\Controllers\SnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kualitas-data',[KdController::class, 'kd']);
     Route::get('/proses-bisnis-statistik',[PbsController::class, 'pbs']);
     Route::get('/kelembagaan',[KelembagaanController::class, 'kelembagaan']);
-    // Route::get('/statistik-nasional',[StatistikNasionalController::class, 'statistik-nasional']);
+    Route::get('/statistik-nasional',[SnController::class, 'sn']);
     
     Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
     
