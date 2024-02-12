@@ -1,0 +1,44 @@
+#indikatorCarousel .carousel-indicators button {
+    background-color: black; /* This will make the buttons black */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(100%); /* Makes the controls white */
+    z-index: 2; /* Ensures they are above other content */
+    width: 4%; /* Adjust the clickable area */
+    top: auto; /* Resets the default top position */
+    bottom: 10px; /* Positions at the bottom of the carousel */
+}
+
+#indikatorCarousel .carousel-item {
+    padding-right: 30px; /* Adds padding to the right of each carousel item */
+    padding-left: 30px; /* Adds padding to the left of each carousel item */
+}
+
+
+/* Adjust the side positioning of the controls so they are within the carousel boundaries */
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%; /* Aligns the controls vertically */
+    transform: translateY(55%); /* Ensures the controls are centered vertically */
+    position: absolute;
+    z-index: 3; /* Above carousel indicators and other content */
+}
+
+/* Ensures that the carousel indicators are not overlapping the controls */
+#indikatorCarousel .carousel-indicators {
+    bottom: -50px; /* Adjust as needed to position the indicators below the carousel */
+}
+
+/* Adjust the positioning of the controls and indicators for smaller screens */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        bottom: 20px; /* Adjust as needed for better visibility on small screens */
+    }
+
+    #indikatorCarousel .carousel-indicators {
+        bottom: -50px; /* Adjust as needed to position the indicators below the carousel */
+    }
+}

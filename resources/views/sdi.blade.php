@@ -3,7 +3,12 @@
 
 @section('title', 'Prinsip SDI')
 
-<!-- Custom styles for carousel controls and indicators -->
+<head>
+    <!-- Other head content -->
+    <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet">
+</head>
+
+{{-- <!-- Custom styles for carousel controls and indicators -->
 <style>
     .carousel-control-prev,
     .carousel-control-next {
@@ -22,13 +27,13 @@
     }
   
     /* Style for the indicators */
-    .carousel-indicators li {
-      background-color: #fff;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+    .carousel-indicators{
+      background-color: #000000;
     }
-</style>
+</style> --}}
+
+
+
 
 @section('content')
     <!-- Hero Section for Beranda -->
@@ -91,31 +96,19 @@
     </section>
     
     
-
     <div class="container mt-3">
-        <div id="indikatorCarousel" class="carousel slide" data-ride="carousel">
-           <!-- Indicators -->
-            <ol class="carousel-indicators">
+        <div id="indikatorCarousel" class="carousel slide" data-interval="false">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
                 @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                    <li data-target="#indikatorCarousel" data-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}"></li>
+                    <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
                 @endforeach
-            </ol>
-
-            <!-- Controls -->
-            <div class="carousel-controls">
-                <a class="carousel-control-prev" href="#indikatorCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#indikatorCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
+    
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
+                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
                         <div class="row mb-4">
                             @foreach($indikatorChunk as $index => $indikator)
                                 @php
@@ -154,23 +147,38 @@
                     </div>
                 @endforeach
             </div>
-            
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#indikatorCarousel" role="button" data-slide="prev">
+    
+            <!-- Controls -->
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#indikatorCarousel" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            
+                <span class="visually-hidden">Next</span>
+            </button> --}}
         </div>
     </div>
+
+    <section style="height: 589px; background-color: #F5F7FA;">
+        {{-- <h1>Romantik</h1> --}}
+        <!-- Other Romantik content goes here -->
+    </section>
+
+
+
+
+
+
+
+    
     
     <!-- Include Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/carousel-js.js') }}"></script>
+
 
 
     

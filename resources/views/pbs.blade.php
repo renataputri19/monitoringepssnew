@@ -1,7 +1,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'Kualitas Data')
+@section('title', 'Proses Bisnis Statistik')
 
 <head>
     <!-- Other head content -->
@@ -13,7 +13,7 @@
     <section style="height: 589px; background-color: #F5F7FA;">
         <div class="hero-section" style="background-color: #F5F7FA; height: 589px;">
             <div class="container">
-                <h1>Kualitas Data</h1>
+                <h1>Proses Bisnis Statistik</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <!-- Other hero content goes here -->
             </div>
@@ -71,14 +71,14 @@
         <div id="indikatorCarousel" class="carousel slide" data-interval="false">
             <!-- Indicators -->
             <div class="carousel-indicators">
-                @foreach(array_chunk(['kd1', 'kd2', 'kd3', 'kd4','kd5', 'kd6', 'kd7', 'kd8','kd9', 'kd10'], 2) as $chunkIndex => $indikatorChunk)
+                @foreach(array_chunk(['pbs1', 'pbs2', 'pbs3', 'pbs4','pbs5', 'pbs6', 'pbs7'], 2) as $chunkIndex => $indikatorChunk)
                     <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
                 @endforeach
             </div>
     
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                @foreach(array_chunk(['kd1', 'kd2', 'kd3', 'kd4','kd5', 'kd6', 'kd7', 'kd8','kd9', 'kd10'], 2) as $chunkIndex => $indikatorChunk)
+                @foreach(array_chunk(['pbs1', 'pbs2', 'pbs3', 'pbs4','pbs5', 'pbs6', 'pbs7'], 2) as $chunkIndex => $indikatorChunk)
                     <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
                         <div class="row mb-4">
                             @foreach($indikatorChunk as $index => $indikator)
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="card-body">
                                             @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
-                                            @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
+                                            @include('partials.indikator_approval_form_pbs', ['indikator' => $indikator])
                                         
                                             <div class="row my-3">
                                                 <div class="col-md-6">

@@ -10,13 +10,17 @@ class DashboardController extends Controller
     {
         // Call the calculation methods from different controllers
         $sdiData = app(SdiController::class)->calculateSdiScore();
-        $kdData = app(kdController::class)->calculateKdScore();
+        $kdData = app(KdController::class)->calculateKdScore();
+        $pbsData = app(PbsController::class)->calculatePbsScore();
+        $kelembagaanData = app(KelembagaanController::class)->calculateKelembagaanScore();
         // ... similarly for other domains
 
         // Aggregate all scores data
         $scoresData = [
             'sdiData' => $sdiData,
             'kdData' => $kdData,
+            'pbsData' => $pbsData,
+            'kelembagaanData' => $kelembagaanData,
             // ... include other scores
         ];
 

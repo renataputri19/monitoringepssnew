@@ -15,6 +15,18 @@
         <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas>
     </section>
 
+    <!-- PBS Score Section -->
+    <section class="mb-4">
+        <h2>PBS Score: {{ $pbsData['pbsScore'] }}</h2>
+        <canvas id="pbsRadarChart" style="width:500px; height:500px;"></canvas>
+    </section>
+
+    <!-- kelembagaan Score Section -->
+    <section class="mb-4">
+        <h2>Kelembagaan Score: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
+        <canvas id="kelembagaanRadarChart" style="width:500px; height:500px;"></canvas>
+    </section>
+
     <!-- More sections for other domains... -->
 
     <!-- Include Chart.js -->
@@ -57,6 +69,58 @@
                     datasets: [{
                         label: 'KD Tingkat',
                         data: @json($kdData['data']),
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // PBS Radar Chart
+            new Chart(document.getElementById('pbsRadarChart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: @json(array_values($pbsData['indikatorTitles'])),
+                    datasets: [{
+                        label: 'PBS Tingkat',
+                        data: @json($pbsData['data']),
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // kelembagaan Radar Chart
+            new Chart(document.getElementById('kelembagaanRadarChart').getContext('2d'), {
+                type: 'radar',
+                data: {
+                    labels: @json(array_values($kelembagaanData['indikatorTitles'])),
+                    datasets: [{
+                        label: 'Kelembagaan Tingkat',
+                        data: @json($kelembagaanData['data']),
                         backgroundColor: 'rgba(40, 167, 69, 0.2)',
                         borderColor: 'rgba(40, 167, 69, 1)',
                         borderWidth: 1

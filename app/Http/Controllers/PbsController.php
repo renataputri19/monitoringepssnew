@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\File;
 use Illuminate\Http\Request;
+use App\Models\File;
 
-class KdController extends Controller
+class PbsController extends Controller
 {
     protected $indikatorTitles = [
-        'kd1' => 'Tingkat Kematangan Relevansi Data Terhadap Pengguna',
-        'kd2' => 'Tingkat Kematangan Proses Identifikasi Kebutuhan Data',
-        'kd3' => 'Tingkat Kematangan Penilaian Akurasi Data',
-        'kd4' => 'Tingkat Kematangan Penjaminan Aktualitas Data',
-        'kd5' => 'Tingkat Kematangan Pemantauan Ketepatan Waktu Diseminasi',
-        'kd6' => 'Tingkat Kematangan Ketersediaan Data untuk Pengguna Data',
-        'kd7' => 'Tingkat Kematangan Akses Media Penyebarluasan Data',
-        'kd8' => 'Tingkat Kematangan Penyediaan Format Data',
-        'kd9' => 'Tingkat Kematangan Keterbandingan Data',
-        'kd10' => 'Tingkat Kematangan Konsistensi Statistik'
+        'pbs1' => 'Tingkat Kematangan Pendefinisian Kebutuhan Statistik',
+        'pbs2' => 'Tingkat Kematangan Kematangan Desain Statistik',
+        'pbs3' => 'Tingkat Kematangan Penyiapan Instrumen',
+        'pbs4' => 'Tingkat Kematangan Proses Pengumpulan Data/Akuisisi Data',
+        'pbs5' => 'Tingkat Kematangan Pengolahan Data',
+        'pbs6' => 'Tingkat Kematangan Analisis Data',
+        'pbs7' => 'Tingkat Kematangan Diseminasi Data',
     ];
 
     protected $tingkatTitles = [
@@ -28,29 +25,26 @@ class KdController extends Controller
         'tingkat5' => 'Tingkat 5',
     ];
 
-    public function kd(){
+    public function pbs(){
         $files = File::all()->groupBy(['indikator', 'tingkat']);
         
-        return view('kd', [
+        return view('pbs', [
             'files' => $files, 
             'indikatorTitles' => $this->indikatorTitles,
             'tingkatTitles' => $this->tingkatTitles
         ]);
     }
 
-    public function calculateKdScore()
+    public function calculatePbsScore()
     {
         $indikatorWeights = [
-            'kd1' => 0.6 * 0.21,
-            'kd2' => 0.4 * 0.21,
-            'kd3' => 0.16,
-            'kd4' => 0.5 * 0.21,
-            'kd5' => 0.5 * 0.21,
-            'kd6' => 0.34 * 0.21,
-            'kd7' => 0.33 * 0.21,
-            'kd8' => 0.33 * 0.21,
-            'kd9' => 0.5 * 0.21,
-            'kd10' => 0.5 * 0.21,
+            'pbs1' => 0.33 * 0.32,
+            'pbs2' => 0.33 * 0.32,
+            'pbs3' => 0.34 * 0.32,
+            'pbs4' => 0.26,
+            'pbs5' => 0.5 * 0.21,
+            'pbs6' => 0.5 * 0.21,
+            'pbs7' => 0.21,
             // add the rest of your indikators with their weights here
         ];
 
@@ -71,13 +65,12 @@ class KdController extends Controller
             }
         }
 
-        $kdScore = round($totalScore, 2);
+        $pbsScore = round($totalScore, 2);
 
         return [
-            'kdScore' => $kdScore,
+            'pbsScore' => $pbsScore,
             'indikatorTitles' => $this->indikatorTitles,
             'data' => $data
         ];
     }
-
 }

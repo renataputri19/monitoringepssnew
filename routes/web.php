@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KdController;
+use App\Http\Controllers\PbsController;
 use App\Http\Controllers\SdiController;
 use App\Http\Controllers\EpssController;
 use App\Http\Controllers\FileController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KelembagaanController;
 use App\Http\Controllers\IndikatorApprovalController;
 
 /*
@@ -44,8 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/sdi',[SdiController::class, 'sdi'])->name('sdi');
     Route::get('/kualitas-data',[KdController::class, 'kd']);
-    // Route::get('/proses-bisnis-statistik',[ProsesBisnisStatistikController::class, 'proses-bisnis-statistik']);
-    // Route::get('/kelembagaan',[KelembagaanController::class, 'kelembagaan']);
+    Route::get('/proses-bisnis-statistik',[PbsController::class, 'pbs']);
+    Route::get('/kelembagaan',[KelembagaanController::class, 'kelembagaan']);
     // Route::get('/statistik-nasional',[StatistikNasionalController::class, 'statistik-nasional']);
     
     Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
