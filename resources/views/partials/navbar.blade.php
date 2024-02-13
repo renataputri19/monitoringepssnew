@@ -46,76 +46,86 @@
 </nav> --}}
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white h-14 flex justify-between items-center px-6">
-    <a class="navbar-brand" href="/">BPS Kota Batam</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            @if(Request::is('/'))
-                <li class="nav-item">
-                    <a href="#beranda" class="nav-link">Beranda</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#tentang-epss" class="nav-link">Tentang EPSS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#romantik" class="nav-link">Romantik</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#simbatik" class="nav-link">Simbatik</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#indah" class="nav-link">Indah</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#hubungi-kami" class="nav-link">Hubungi Kami</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/login') }}" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/epss') }}" class="nav-link">EPSS</a>
-                </li>
-                <!-- More nav items -->
-    
-            @else
-            
-                <li class="nav-item">
-                    <a href="{{ url('/epss') }}" class="nav-link">EPSS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/sdi') }}" class="nav-link">Prinsip SDI</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/kualitas-data') }}" class="nav-link">Kualitas Data</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/proses-bisnis-statistik') }}" class="nav-link">Proses Bisnis Statistik</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/kelembagaan') }}" class="nav-link">Kelembagaan</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/statistik-nasional') }}" class="nav-link">Statistik Nasional</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard Perencanaan</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('/list-opd') }}" class="nav-link">List OPD</a>
-                </li>
-                <li class="nav-item">
-                    @if(Auth::check())
-                        <form action="{{ route('logout') }}" method="POST" class="nav-link">
-                            @csrf
-                            <button type="submit" >Logout</button>
-                        </form>
-                    @endif
-                </li>
-                <!-- More nav items -->
-            @endif
-        </ul>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('img/Logo BPS Kota Batam Artboard 1 .png') }}" alt="BPS Kota Batam Logo" height="70" width="200">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                @if(Request::is('/'))
+                    <li class="nav-item">
+                        <a href="#beranda" class="nav-link">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tentang-epss" class="nav-link">Tentang EPSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#romantik" class="nav-link">Romantik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#simbatik" class="nav-link">Simbatik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#indah" class="nav-link">Indah</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#hubungi-kami" class="nav-link">Hubungi Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/epss') }}" class="nav-link">EPSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/login') }}" class="nav-link">Login</a>
+                    </li>
+                    
+                    <!-- More nav items -->
+        
+                @else
+                
+                    <li class="nav-item">
+                        <a href="{{ url('/epss') }}" class="nav-link">EPSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/sdi') }}" class="nav-link">Prinsip SDI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/kualitas-data') }}" class="nav-link">Kualitas Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/proses-bisnis-statistik') }}" class="nav-link">Proses Bisnis Statistik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/kelembagaan') }}" class="nav-link">Kelembagaan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/statistik-nasional') }}" class="nav-link">Statistik Nasional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard Perencanaan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/list-opd') }}" class="nav-link">List OPD</a>
+                    </li>
+                    <li class="nav-item">
+                        @if(Auth::check())
+                            <a href="{{ route('logout') }}" 
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                            class="nav-link">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
+                    </li>
+                    <!-- More nav items -->
+                @endif
+            </ul>
+        </div>
     </div>
-</nav>
+  </nav>
