@@ -6,6 +6,7 @@
 <head>
     <!-- Other head content -->
     <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
 </head>
 
 @section('content')

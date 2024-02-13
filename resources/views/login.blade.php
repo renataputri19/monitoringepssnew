@@ -3,6 +3,11 @@
 
 @section('title', 'Login')
 
+<head>
+    <!-- Other head content -->
+    {{-- <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet"> --}}
+</head>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

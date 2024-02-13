@@ -5,6 +5,7 @@
 <head>
     <!-- Other head content -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
 </head>
 
 @section('content')
@@ -81,6 +82,18 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <!-- Other content -->
+        
+        <h2>Dashboard Perencanaan Statistik Sektoral 2024</h2>
+        <a href="https://docs.google.com/spreadsheets/d/1IIvd6kYLBMrfgjXQkLBo9J8CubXH-zbibo3yjGIiGV8/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Spreadsheet</a>
+
+        <!-- Embed iframe for spreadsheet -->
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfE1jKTssJ7TmRKyEu_ExixFdZRdCoSv2CFU1bUQpZsE1mdlC-q1_8kB_RkjEELKFLxJR_yRxGYjWl/pubhtml?gid=1115838130&amp;single=true&amp;widget=true&amp;headers=false" width="1500" height="700" frameborder="0"></iframe>
+        <
+        <!-- Other content -->
+    </div>
 
     {{-- <!-- Dashboard Score Section -->
     <section class="dashboard-section">

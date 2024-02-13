@@ -2,6 +2,11 @@
 
 @section('title', 'Beranda')
 
+<head>
+    <!-- Other head content -->
+    {{-- <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet"> --}}
+</head>
+
 @section('content')
     <!-- Hero Section for Beranda -->
     <section id="beranda" style="height: 589px; background-color: #F5F7FA;">

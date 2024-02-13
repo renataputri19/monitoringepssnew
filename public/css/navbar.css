@@ -1,0 +1,17 @@
+/* navbar.css */
+.navbar {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 0.5rem 1rem; /* Top and bottom padding with a bit more left and right padding */
+}
+
+.navbar a {
+    color: #333; /* Dark text for better contrast */
+    margin-right: 15px; /* Space out the links */
+}
+
+.navbar a:hover {
+    color: #0056b3; /* Change color on hover for visual feedback */
+}
+
+/* Additional custom styles */
+/* ... */

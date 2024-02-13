@@ -1,0 +1,40 @@
+/* list-opd.css */
+.table {
+    /* Add your styles for table */
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+/* list-opd.css */
+.container {
+    padding: 20px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn-success, .btn-secondary {
+    width: 120px;
+}
+
+.d-flex {
+    gap: 20px;
+}
+
+.btn-opd {
+    margin-right: 10px; /* Adjust the right margin as needed */
+}
+
+/* If you want to specifically target only the cancel button */
+.btn-cancel {
+    margin-left: 10px; /* Adds space to the left of the cancel button */
+}
+
+/* Add other styles as needed */

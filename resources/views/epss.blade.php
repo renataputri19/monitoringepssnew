@@ -2,6 +2,11 @@
 
 @section('title', 'EPSS')
 
+<head>
+    <!-- Other head content -->
+    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
+</head>
+
 @section('content')
     <!-- Hero Section -->
     <div class="hero-section" style="background-color: #F5F7FA; height: 589px;">

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KdController;
+use App\Http\Controllers\SnController;
+use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PbsController;
 use App\Http\Controllers\SdiController;
 use App\Http\Controllers\EpssController;
@@ -13,7 +15,6 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelembagaanController;
 use App\Http\Controllers\IndikatorApprovalController;
-use App\Http\Controllers\SnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/proses-bisnis-statistik',[PbsController::class, 'pbs']);
     Route::get('/kelembagaan',[KelembagaanController::class, 'kelembagaan']);
     Route::get('/statistik-nasional',[SnController::class, 'sn']);
+    Route::get('/list-opd', [OpdController::class, 'index'])->name('list-opd');
+    Route::get('/opd/create', [OpdController::class, 'create'])->name('opd.create');
+    Route::get('/opd/{id}/edit', [OpdController::class, 'edit'])->name('opd.edit');
+    Route::put('/opd/{id}', [OpdController::class, 'update'])->name('opd.update');
+
+    Route::post('/opd', [OpdController::class, 'store'])->name('opd.store');
+
+    Route::delete('/opd/{id}', [OpdController::class, 'destroy'])->name('opd.destroy');
+
+
     
     Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
     
