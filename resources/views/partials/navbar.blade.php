@@ -1,4 +1,5 @@
 
+
 {{-- <nav class="bg-white h-14 flex justify-between items-center px-6">
     <a href="/" class="text-lg font-semibold text-gray-700">
         <!-- Insert Logo Here -->
