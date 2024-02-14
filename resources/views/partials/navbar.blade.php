@@ -1,9 +1,3 @@
-<head>
-    <!-- Other head content -->
-    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet"> --}}
-</head>
-
 
 {{-- <nav class="bg-white h-14 flex justify-between items-center px-6">
     <a href="/" class="text-lg font-semibold text-gray-700">
