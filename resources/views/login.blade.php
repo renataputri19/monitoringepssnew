@@ -92,7 +92,7 @@
                 <i class="bx bx-lock-alt icon"></i>
             </div>
 
-            <div class="remember-forgot">
+            {{-- <div class="remember-forgot">
             <div class="remember-me">
                 <input type="checkbox" id="remember">
                 <label for="remember">Remember me</label>
@@ -101,7 +101,7 @@
             <div class="forgot">
                 <a href="#">Forgot password?</a>
             </div>
-            </div>
+            </div> --}}
 
             <div class="input_box">
                 <button type="submit" class="input-submit">
@@ -109,9 +109,9 @@
                 </button>
             </div>
 
-            <div class="register">
+            {{-- <div class="register">
             <span>Don't have an account? <a href="#">Register</a></span>
-            </div>
+            </div> --}}
         </div>
         </div>
     <!-- partial -->
