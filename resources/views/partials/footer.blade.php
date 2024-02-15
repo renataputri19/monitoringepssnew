@@ -30,7 +30,7 @@
           <h5 class="text-uppercase mb-4">More About Us</h5>
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="https://batamkota.bps.go.id/about" class="text-dark">About us</a>
+              <a href="https://batamkota.bps.go.id/" class="text-dark">About us</a>
             </li>
           </ul>
         </div>
@@ -52,5 +52,4 @@
       © 2024 BPS Kota Batam:
       <a class="text-white" href="https://batamkota.bps.go.id/">batamkota.bps.go.id</a>
     </div>
-  </footer>
-  
+</footer>

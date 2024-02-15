@@ -117,7 +117,7 @@
       margin-right: 0;
     }
   }
-  
+
   /* For small screens, use half of the screen for each image */
   @media (max-width: 576px) {
     .col-custom {
@@ -126,6 +126,120 @@
     }
   }
 
+  /* Add this to your home.css file */
+
+.rounded-box {
+    border-radius: 20px; /* More rounded corners as per your photo */
+  }
+  
+/* Specific styles for the blue box content */
+.rounded-box h2,
+.rounded-box p {
+  color: #F5F7FA; /* Off-white text color */
+}
+
+/* Ensure the button inside the blue box has contrasting text color */
+.rounded-box .btn {
+  color: #043277; /* Dark blue text color to match the blue background */
+  border-color: #F5F7FA; /* Off-white border */
+}
+
+/* Specific styles for the content outside the blue box, directly targeting the h2 and p elements within the second .col-md-6 */
+.romantik-section .col-md-6:not(:first-child) h2,
+.romantik-section .col-md-6:not(:first-child) p {
+  color: #717171; /* Grey text color */
+}
+
+  
+  /* Add responsive behavior if necessary */
+  @media (max-width: 576px) {
+    .rounded-box {
+      border-radius: 15px; /* Slightly less rounded on smaller screens if desired */
+    }
+  }
+  
+  .romantik-section {
+    background-color: #F5F7FA; /* Same as the hero section */
+  }
+  
+  
+  .romantik-blue-bg {
+    background-color: #34568B; /* Adjust to the specific blue you want */
+    border-radius: 10px; /* Rounded corners */
+    padding: 2rem;
+    color: #ffffff; /* White text color for contrast */
+  }
+  
+  .romantik-blue-bg h2 {
+    color: #ffffff; /* Ensures the heading is white */
+  }
+
+  .romantik-blue-bg p {
+    color: #D1D3D4; /* Lighter shade of white for the paragraph */
+  }
+  
+  /* Style for the light button to stand out on the blue background */
+  .romantik-blue-bg .btn-light {
+    color: #34568B; /* Color of the button text to match the blue background */
+    border: 2px solid #ffffff; /* White border for the button */
+  }
+  
+
+  .simbatik-section h2,
+  .simbatik-section p {
+    color: #717171; /* Grey text for the content */
+  }
+  
+  .card {
+    background-color: #F5F7FA; /* Light grey background for the card */
+    border-radius: 20px; /* Rounded corners for the card */
+    /* The box-shadow property adds a shadow to the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    color: #043277; /* Dark blue color for the card title */
+  }
+  
+  .card p {
+    color: #717171; /* Grey text for the card content */
+  }
+  
+  .card .btn-primary {
+    background-color: #043277; /* Dark blue background for the button */
+    border: none; /* No border for the button */
+    /* Optional: add more button styling if needed */
+  }
+  
+  .indah-section h2,
+.indah-section p {
+  color: #717171; /* Grey text for the content */
+}
+
+.indah-section .rounded-lg {
+  background-color: #ffffff; /* White background for the rounded box */
+  border-radius: 20px; /* Rounded corners for the box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.indah-section .btn-primary {
+  background-color: #043277; /* Dark blue background for the button */
+  border: none; /* No border for the button */
+  /* Optional: add more button styling if needed */
+}
+
+/* Add responsive behavior if necessary */
+@media (max-width: 576px) {
+  .indah-section .rounded-lg {
+    border-radius: 15px; /* Slightly less rounded on smaller screens if desired */
+  }
+}
+
+
+
+  /* Add additional responsive styles as needed */
+  
+  
 
 
   /* Add additional styling and responsive adjustments as needed */
