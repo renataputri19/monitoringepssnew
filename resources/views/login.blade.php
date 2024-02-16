@@ -4,11 +4,6 @@
 @section('title', 'Login')
 
 <head>
-    <!-- Other head content -->
-    {{-- <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
-    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 

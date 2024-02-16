@@ -1,29 +1,57 @@
-/* dashboard.css */
-/* Ensure you link this CSS file in your blade layout using the link tag */
-
-/* General dashboard styling */
 .dashboard-section {
-    margin-bottom: 2rem;
-  }
-  
-  /* Styling for the canvas elements */
-  .dashboard-canvas {
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
-    margin: auto;
-  }
-  
-  /* Customizing the look and feel of headers */
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #333;
-  }
+  background-color: #FFFFFF; /* White background for the dashboard section */
+  padding-top: 2rem; /* Top padding */
+  padding-bottom: 2rem; /* Bottom padding */
+}
 
-  
-  
-  
-  /* Bootstrap utility classes can be applied directly in the blade file */
-  /* For example, you can add classes like 'text-center', 'mb-4', 'bg-light' to your elements */
-  
+.dashboard-header {
+  color: #333; /* Dark color for headers */
+  margin-bottom: 1rem; /* Space below the header */
+}
+
+.chart-container {
+  background: #f8f9fa; /* Light grey background for the chart area */
+  padding: 1rem; /* Padding around the chart */
+  border: 1px solid #eaeaea; /* Light border for the chart container */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+canvas {
+  max-width: 100%; /* Ensures canvas is responsive */
+  height: auto; /* Auto-height for canvas */
+  margin: auto; /* Center canvas within its container */
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+      padding: 1rem; /* Smaller padding on small screens */
+  }
+}
+
+.container-jadwal .text-center {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.container-jadwal .mb-4 {
+  margin-bottom: 1.5rem; /* Bootstrap's margin-bottom space */
+}
+
+.container-jadwal .iframe-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* Aspect ratio of 16:9 */
+  height: 0;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.container-jadwal .iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}

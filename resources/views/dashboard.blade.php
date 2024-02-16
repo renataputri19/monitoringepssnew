@@ -2,80 +2,50 @@
 
 @section('title', 'Dashboard')
 
-<head>
-    <!-- Other head content -->
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
-</head>
-
 @section('content')
 
     <!-- Dashboard Section -->
-    <section class="dashboard-section">
+    <section class="dashboard-section py-5">
         <div class="container">
+            <!-- Main Score Chart -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <div class="chart-container text-center">
+                        <h2 class="dashboard-header">Score: {{ $dashboardData['dashboardScore']  }}</h2>
+                        <canvas id="dashboardRadarChart" style="width:500px; height:500px;"></canvas>
+                    </div>
+                </div>
+            </div>
             <div class="row">
-                <!-- Each Chart Column -->
                 <div class="col-lg-6 mb-4">
                     <div class="chart-container">
-                        <!-- Dashboard Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">Score: {{ $dashboardData['dashboardScore']  }}</h2>
-                            <canvas id="dashboardRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
+                        <h2 class="dashboard-header">SDI Score: {{ $sdiData['sdiScore'] }}</h2>
+                        <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                     <div class="chart-container">
-                        <!-- SDI Score Section -->
-                        <section class="dashboard-section">
-                            {{-- <h2 class="dashboard-header">SDI Score: {{ $sdiData['sdiScore'] }}</h2>
-                            <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas> --}}
-                        </section>
+                        <h2 class="dashboard-header">KD Score: {{ $kdData['kdScore'] }}</h2>
+                        <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas> 
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                     <div class="chart-container">
-                        <!-- SDI Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">SDI Score: {{ $sdiData['sdiScore'] }}</h2>
-                            <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
+                        <h2 class="dashboard-header">PBS Score: {{ $pbsData['pbsScore'] }}</h2>
+                        <canvas id="pbsRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4">
                     <div class="chart-container">
-                        <!-- KD Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">KD Score: {{ $kdData['kdScore'] }}</h2>
-                            <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
+                        <h2 class="dashboard-header">Kelembagaan Score: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
+                        <canvas id="kelembagaanRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="chart-container">
-                        <!-- PBS Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">PBS Score: {{ $pbsData['pbsScore'] }}</h2>
-                            <canvas id="pbsRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="chart-container">
-                        <!-- kelembagaan Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">Kelembagaan Score: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
-                            <canvas id="kelembagaanRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="chart-container">
-                        <!-- sn Score Section -->
-                        <section class="dashboard-section">
-                            <h2 class="dashboard-header">Statistik Nasional Score: {{ $snData['snScore'] }}</h2>
-                            <canvas id="snRadarChart" style="width:500px; height:500px;"></canvas>
-                        </section>
+                <div class="col-lg-6 mb-4 offset-lg-3">
+                    <div class="chart-container ">
+                        <h2 class="dashboard-header">Statistik Nasional Score: {{ $snData['snScore'] }}</h2>
+                        <canvas id="snRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
                 <!-- Repeat for other charts -->
@@ -83,17 +53,23 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-jadwal">
         <!-- Other content -->
         
-        <h2>Dashboard Perencanaan Statistik Sektoral 2024</h2>
-        <a href="https://docs.google.com/spreadsheets/d/1IIvd6kYLBMrfgjXQkLBo9J8CubXH-zbibo3yjGIiGV8/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Spreadsheet</a>
-
-        <!-- Embed iframe for spreadsheet -->
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfE1jKTssJ7TmRKyEu_ExixFdZRdCoSv2CFU1bUQpZsE1mdlC-q1_8kB_RkjEELKFLxJR_yRxGYjWl/pubhtml?gid=1115838130&amp;single=true&amp;widget=true&amp;headers=false" width="1500" height="700" frameborder="0"></iframe>
+        <h2 class="text-center mb-4">Dashboard Perencanaan Statistik Sektoral 2024</h2>
+        <div class="text-center mb-4">
+            <a href="https://docs.google.com/spreadsheets/d/1IIvd6kYLBMrfgjXQkLBo9J8CubXH-zbibo3yjGIiGV8/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Spreadsheet</a>
+        </div>
+    
+        <!-- Responsive iframe wrapper -->
+        <div class="iframe-container">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfE1jKTssJ7TmRKyEu_ExixFdZRdCoSv2CFU1bUQpZsE1mdlC-q1_8kB_RkjEELKFLxJR_yRxGYjWl/pubhtml?gid=1115838130&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
         
         <!-- Other content -->
     </div>
+    
+
 
     {{-- <!-- Dashboard Score Section -->
     <section class="dashboard-section">
@@ -139,6 +115,18 @@
 
     <!-- Initialize Radar Charts -->
     <script>
+
+        function splitLabelEveryTwoWords(label) {
+            let words = label.split(' ');
+            let parts = [];
+            for (let i = 0; i < words.length; i += 2) {
+                // Take two words at a time and join them with a space, add to parts array
+                parts.push(words.slice(i, i + 2).join(' '));
+            }
+            return parts; // Returns an array of strings, each containing two words
+        }
+
+
         document.addEventListener('DOMContentLoaded', function () {
 
             // Dashboard Radar Chart
@@ -163,14 +151,28 @@
                 options: {
                     scales: {
                         r: {
+                            pointLabels: {
+                                font: {
+                                    size: 12 // Smaller font size
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
                             min: 0,
                             max: 5,
                             ticks: {
                                 stepSize: 1
                             }
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
+                        }
                     }
                 }
+
             });
 
 
@@ -190,25 +192,31 @@
                 options: {
                     scales: {
                         r: {
-                        pointLabels: {
-                            callback: function(label, index) {
-                            // Split the label into words and return them in the format you want
-                            // For instance, if you want to split the label into two lines after a space:
-                            return label.split(' ');
-                            // This will display each word on a new line within the radar chart.
+                            pointLabels: {
+                                font: {
+                                    size: 10 // Smaller font size
+                                },
+                                callback: function(label) {
+                                    return splitLabelEveryTwoWords(label); // Use the custom function for splitting labels
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
                             }
-                        },
-                        angleLines: {
-                            display: true
-                        },
-                        min: 0,
-                        max: 5,
-                        ticks: {
-                            stepSize: 1
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
                         }
                     }
                 }
+
             });
 
             // KD Radar Chart
@@ -227,25 +235,31 @@
                 options: {
                     scales: {
                         r: {
-                        pointLabels: {
-                            callback: function(label, index) {
-                            // Split the label into words and return them in the format you want
-                            // For instance, if you want to split the label into two lines after a space:
-                            return label.split(' ');
-                            // This will display each word on a new line within the radar chart.
+                            pointLabels: {
+                                font: {
+                                    size: 10 // Smaller font size
+                                },
+                                callback: function(label) {
+                                    return splitLabelEveryTwoWords(label); // Use the custom function for splitting labels
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
                             }
-                        },
-                        angleLines: {
-                            display: true
-                        },
-                        min: 0,
-                        max: 5,
-                        ticks: {
-                            stepSize: 1
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
                         }
                     }
                 }
+
             });
 
             // PBS Radar Chart
@@ -264,25 +278,31 @@
                 options: {
                     scales: {
                         r: {
-                        pointLabels: {
-                            callback: function(label, index) {
-                            // Split the label into words and return them in the format you want
-                            // For instance, if you want to split the label into two lines after a space:
-                            return label.split(' ');
-                            // This will display each word on a new line within the radar chart.
+                            pointLabels: {
+                                font: {
+                                    size: 10 // Smaller font size
+                                },
+                                callback: function(label) {
+                                    return splitLabelEveryTwoWords(label); // Use the custom function for splitting labels
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
                             }
-                        },
-                        angleLines: {
-                            display: true
-                        },
-                        min: 0,
-                        max: 5,
-                        ticks: {
-                            stepSize: 1
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
                         }
                     }
                 }
+
             });
 
             // kelembagaan Radar Chart
@@ -301,25 +321,31 @@
                 options: {
                     scales: {
                         r: {
-                        pointLabels: {
-                            callback: function(label, index) {
-                            // Split the label into words and return them in the format you want
-                            // For instance, if you want to split the label into two lines after a space:
-                            return label.split(' ');
-                            // This will display each word on a new line within the radar chart.
+                            pointLabels: {
+                                font: {
+                                    size: 10 // Smaller font size
+                                },
+                                callback: function(label) {
+                                    return splitLabelEveryTwoWords(label); // Use the custom function for splitting labels
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
                             }
-                        },
-                        angleLines: {
-                            display: true
-                        },
-                        min: 0,
-                        max: 5,
-                        ticks: {
-                            stepSize: 1
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
                         }
                     }
                 }
+
             });
 
             // sn Radar Chart
@@ -338,25 +364,31 @@
                 options: {
                     scales: {
                         r: {
-                        pointLabels: {
-                            callback: function(label, index) {
-                            // Split the label into words and return them in the format you want
-                            // For instance, if you want to split the label into two lines after a space:
-                            return label.split(' ');
-                            // This will display each word on a new line within the radar chart.
+                            pointLabels: {
+                                font: {
+                                    size: 10 // Smaller font size
+                                },
+                                callback: function(label) {
+                                    return splitLabelEveryTwoWords(label); // Use the custom function for splitting labels
+                                }
+                            },
+                            angleLines: {
+                                display: true
+                            },
+                            min: 0,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
                             }
-                        },
-                        angleLines: {
-                            display: true
-                        },
-                        min: 0,
-                        max: 5,
-                        ticks: {
-                            stepSize: 1
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Optionally hide the legend if it's not needed
                         }
                     }
                 }
+
             });
 
             // Initialize more charts for other domains as needed...

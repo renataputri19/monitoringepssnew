@@ -14,6 +14,7 @@
 #indikatorCarousel .carousel-item {
     padding-right: 30px; /* Adds padding to the right of each carousel item */
     padding-left: 30px; /* Adds padding to the left of each carousel item */
+    
 }
 
 
@@ -42,3 +43,4 @@
         bottom: -50px; /* Adjust as needed to position the indicators below the carousel */
     }
 }
+

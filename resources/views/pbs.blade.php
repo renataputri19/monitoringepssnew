@@ -3,31 +3,29 @@
 
 @section('title', 'Proses Bisnis Statistik')
 
-<head>
-    <!-- Other head content -->
-    <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
-</head>
 
 @section('content')
-    <!-- Hero Section for Beranda -->
-    <section style="height: 589px; background-color: #F5F7FA;">
-        <div class="hero-section" style="background-color: #F5F7FA; height: 589px;">
-            <div class="container">
-                <h1>Proses Bisnis Statistik</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <!-- Other hero content goes here -->
+
+    <section class="section-hero-domain" style="background-color: #F5F7FA;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <h1 class="domain-title text-center">Proses Bisnis Statistik</h1>
+                    <p class="domain-text">
+                        Pengenalan tahapan-tahapan dalam proses bisnis penyelenggaraan kegiatan statistik yang biasa disebut sebagai Generic Statistical Business Process Model (GSBPM).
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
 
-    <section style="height: 900px; background-color: #FFFFFF;">
-        <div class="container mt-4">
-            <div class="row">
-                <!-- Left Column -->
-                <div class="col-md-6">
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
+    <section class="section-indikator">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <!-- Centered Column for Form -->
+                <div class="col-md-8">
+                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data" class="form-indikator">
                         @csrf
                         <div class="form-group">
                             <label for="indikator">Indikator:</label>
@@ -69,7 +67,7 @@
     </section>
 
     <div class="container mt-3">
-        <div id="indikatorCarousel" class="carousel slide" data-interval="false">
+        <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
             <!-- Indicators -->
             <div class="carousel-indicators">
                 @foreach(array_chunk(['pbs1', 'pbs2', 'pbs3', 'pbs4','pbs5', 'pbs6', 'pbs7'], 2) as $chunkIndex => $indikatorChunk)
@@ -89,7 +87,7 @@
                                 @endphp
                 
                                 <div class="col-md-6">
-                                    <div class="card">
+                                    <div class="card mt-4">
                                         <div class="card-header">
                                             <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
                                         </div>
@@ -132,17 +130,10 @@
         </div> --}}
     </div>
 
-    <section style="height: 589px; background-color: #F5F7FA;">
+    <section style="height: 45px; background-color: #F5F7FA;">
         {{-- <h1>Romantik</h1> --}}
         <!-- Other Romantik content goes here -->
     </section>
-
-
- <!-- Include Bootstrap JS and jQuery -->
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
- <script src="{{ asset('js/carousel-js.js') }}"></script>
 
 
 

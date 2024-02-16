@@ -2,12 +2,6 @@
 
 @section('title', 'Beranda')
 
-<head>
-    <!-- ... other head elements ... -->
-  
-    <!-- AOS Library -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  </head>
 
 @section('content')
 
@@ -144,18 +138,5 @@
 
   
 
-
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      offset: 200, // offset from the original trigger point
-      duration: 600, // duration of the animation
-      once: true, // whether animation should happen only once - while scrolling down
-      mirror: false, // whether elements should animate out while scrolling past them
-      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-    });
-  </script>
-  
 
 @endsection

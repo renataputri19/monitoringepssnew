@@ -3,58 +3,30 @@
 
 @section('title', 'Prinsip SDI')
 
-<head>
-    <!-- Other head content -->
-    <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
-</head>
-
-{{-- <!-- Custom styles for carousel controls and indicators -->
-<style>
-    .carousel-control-prev,
-    .carousel-control-next {
-      filter: invert(100%); /* Makes the controls white */
-      z-index: 2; /* Ensures they are above other content */
-      width: 4%; /* Adjust the clickable area */
-    }
-  
-    /* Position the controls inside the carousel boundaries */
-    .carousel-control-prev {
-      left: 10px;
-    }
-  
-    .carousel-control-next {
-      right: 10px;
-    }
-  
-    /* Style for the indicators */
-    .carousel-indicators{
-      background-color: #000000;
-    }
-</style> --}}
-
-
-
 
 @section('content')
-    <!-- Hero Section for Beranda -->
-    <section style="height: 589px; background-color: #F5F7FA;">
-        <div class="hero-section" style="background-color: #F5F7FA; height: 589px;">
-            <div class="container">
-                <h1>Prinsip SDI</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <!-- Other hero content goes here -->
+
+
+    <section class="section-hero-domain" style="background-color: #F5F7FA;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <h1 class="domain-title text-center">Prinsip SDI</h1>
+                    <p class="domain-text"> Berdasarkan Peraturan Presiden Republik Indonesia Nomor 39 Tahun 2019 Tentang Satu Data Indonesia,
+                        Satu Data Indonesia adalah kebijakan tata kelola data pemerintah untuk menghasilkan data yang akurat, mutakhir, terpadu, dan dapat dipertanggungjawabkan, serta mudah diakses dan dibagipakaikan antar instansi pusat dan instansi daerah melalui pemenuhan standar data, metadata, interoperabilitas data, dan menggunakan kode referensi dan data induk. 
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
 
-    <section style="height: 900px; background-color: #FFFFFF;">
-        <div class="container mt-4">
-            <div class="row">
-                <!-- Left Column -->
-                <div class="col-md-6">
-                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data">
+    <section class="section-indikator">
+        <div class="container">
+            <div class="row justify-content-center" data-aos="fade-up">
+                <!-- Centered Column for Form -->
+                <div class="col-md-8">
+                    <form action="{{ route('file.upload') }}" method="POST" enctype="multipart/form-data" class="form-indikator">
                         @csrf
                         <div class="form-group">
                             <label for="indikator">Indikator:</label>
@@ -81,16 +53,6 @@
                         <input type="hidden" name="aspek" value="Standar Data Statistik">
                         <button type="submit" class="btn btn-primary mt-2">Upload</button>
                     </form>
-    
-                    {{-- <div class="uploaded-files mt-4">
-                        <h2>File yang Diupload</h2>
-                        @foreach ($file as $item)
-                            <div class="file-item">
-                                <p>{{ $item->tingkat }}</p>
-                                <a href="{{ asset('/storage/'.$item->filename) }}">Download File</a>
-                            </div>
-                        @endforeach
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -98,7 +60,7 @@
     
     
     <div class="container mt-3">
-        <div id="indikatorCarousel" class="carousel slide" data-interval="false">
+        <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
             <!-- Indicators -->
             <div class="carousel-indicators">
                 @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
@@ -118,7 +80,7 @@
                                 @endphp
                 
                                 <div class="col-md-6">
-                                    <div class="card">
+                                    <div class="card mt-4">
                                         <div class="card-header">
                                             <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
                                         </div>
@@ -161,50 +123,11 @@
         </div>
     </div>
 
-    <section style="height: 589px; background-color: #F5F7FA;">
+    <section style="height: 45px; background-color: #F5F7FA;">
         {{-- <h1>Romantik</h1> --}}
         <!-- Other Romantik content goes here -->
     </section>
 
 
-
-
-
-
-
-    
-    
-    <!-- Include Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/carousel-js.js') }}"></script>
-
-
-
-    
-    {{-- <!-- Section for Romantik -->
-    <section style="height: 589px; background-color: #F5F7FA;">
-        <h1>Romantik</h1>
-        <!-- Other Romantik content goes here -->
-    </section>
-
-    <!-- Section for Simbatik -->
-    <section style="height: 589px; background-color: #FFFFFF;">
-        <h1>Simbatik</h1>
-        <!-- Other Simbatik content goes here -->
-    </section>
-
-    <!-- Section for Indah -->
-    <section style="height: 589px; background-color: #F5F7FA;">
-        <h1>Indah</h1>
-        <!-- Other Indah content goes here -->
-    </section>
-
-    <!-- Section for Hubungi Kami -->
-    <section style="height: 589px; background-color: #FFFFFF;">
-        <h1>Hubungi Kami</h1>
-        <!-- Other Hubungi Kami content goes here -->
-    </section> --}}
 
 @endsection
