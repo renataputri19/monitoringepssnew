@@ -9,7 +9,7 @@
         <div class="container">
             <!-- Main Score Chart -->
             <div class="row justify-content-center mb-4">
-                <div class="col-lg-8">
+                <div class="col-lg-8" data-aos="fade-up">
                     <div class="chart-container text-center">
                         <h2 class="dashboard-header">Score: {{ $dashboardData['dashboardScore']  }}</h2>
                         <canvas id="dashboardRadarChart" style="width:500px; height:500px;"></canvas>
@@ -17,32 +17,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4" data-aos="fade-up">
                     <div class="chart-container">
                         <h2 class="dashboard-header">SDI Score: {{ $sdiData['sdiScore'] }}</h2>
                         <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas>
                         
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4" data-aos="fade-up">
                     <div class="chart-container">
                         <h2 class="dashboard-header">KD Score: {{ $kdData['kdScore'] }}</h2>
                         <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas> 
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4" data-aos="fade-up">
                     <div class="chart-container">
                         <h2 class="dashboard-header">PBS Score: {{ $pbsData['pbsScore'] }}</h2>
                         <canvas id="pbsRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4" data-aos="fade-up">
                     <div class="chart-container">
                         <h2 class="dashboard-header">Kelembagaan Score: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
                         <canvas id="kelembagaanRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4 offset-lg-3">
+                <div class="col-lg-6 mb-4 offset-lg-3" data-aos="fade-up">
                     <div class="chart-container ">
                         <h2 class="dashboard-header">Statistik Nasional Score: {{ $snData['snScore'] }}</h2>
                         <canvas id="snRadarChart" style="width:500px; height:500px;"></canvas>
@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <div class="container-jadwal">
+    <div class="container-jadwal" data-aos="fade-up">
         <!-- Other content -->
         
         <h2 class="text-center mb-4">Dashboard Perencanaan Statistik Sektoral 2024</h2>

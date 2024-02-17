@@ -110,6 +110,9 @@
                     </div>
                 @endforeach
             </div>
+
+
+            
     
             <!-- Controls -->
             {{-- <button class="carousel-control-prev" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="prev">
@@ -122,6 +125,163 @@
             </button> --}}
         </div>
     </div>
+
+
+
+
+    <div class="container section-bukti">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">File bukti Dukung</th>
+                        <th scope="col">Tingkat</th>
+                        <th scope="col">Hasil</th>
+                        <th scope="col">Reasons</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through each indikator -->
+                    @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
+                        @php
+                            $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                        @endphp
+                        <!-- Assuming you have a way to define the $loop variable -->
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>
+                                <!-- Assuming you have a method to get the file URL -->
+                                <a href="{{ asset('/storage/'.$file->filename) }}" target="_blank">Download File</a>
+                            </td>
+                            <td>{{ $indikatorTitles[$indikator] ?? 'N/A' }}</td>
+                            <td>{{ $indikatorApproval->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</td>
+                            <td>{{ $indikatorApproval->reason ?? 'N/A' }}</td>
+                            <td>
+                                <!-- Action buttons will trigger a modal for input -->
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#approveModal{{ $indikator }}">Approve</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#disapproveModal{{ $indikator }}">Disapprove</button>
+                            </td>
+                            <td>{{ $indikatorApproval->updated_at ?? 'N/A' }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Modals for each indikator -->
+        @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
+            <div class="modal fade" id="approveModal{{ $indikator }}" tabindex="-1" aria-labelledby="approveModalLabel{{ $indikator }}" aria-hidden="true">
+                <!-- Modal content here -->
+            </div>
+            <div class="modal fade" id="disapproveModal{{ $indikator }}" tabindex="-1" aria-labelledby="disapproveModalLabel{{ $indikator }}" aria-hidden="true">
+                <!-- Modal content here -->
+            </div>
+        @endforeach
+    </div>
+    
+
+
+    
+
+    <div class="container">
+        @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
+            
+            <div class="row">
+                <div class="col">
+                    <h2>{{ $indikatorTitles[$indikator] }}</h2>
+                    {{-- Check if the indikator is already approved or not --}}
+                    @php
+                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                    @endphp
+                    
+                    @if($indikatorApproval)
+                        <p>Status: {{ $indikatorApproval->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</p>
+                        
+                        <p>Tingkat: {{ $indikatorApproval->tingkat }}</p>
+                        
+                        <p>Alasan: {{ $indikatorApproval->reason ?? 'N/A' }}</p>
+                    
+                        <form action="{{ route('indikator.approve') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="indikator" value="{{ $indikator }}">
+                            <input type="hidden" name="domain" value="sdi">
+                            <input type="hidden" name="aspek" value="Standar Data Statistik">
+                            {{-- Approval/Disapproval Selection --}}
+                            <div>
+                                <input type="radio" id="approve" name="disetujui" value="1" checked>
+                                <label for="approve">Setujui</label><br>
+                                <input type="radio" id="disapprove" name="disetujui" value="0">
+                                <label for="disapprove">Tidak Setujui</label><br>
+                            </div>
+                            {{-- Tingkat Selection --}}
+                            <select name="tingkat">
+                                <option value="1">Tingkat 1</option>
+                                <option value="2">Tingkat 2</option>
+                                <option value="3">Tingkat 3</option>
+                                <option value="4">Tingkat 4</option>
+                                <option value="5">Tingkat 5</option>
+                                {{-- ... other options ... --}}
+                            </select>
+                            <textarea name="reason" placeholder="Alasan (opsional)"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    @endif
+                    
+                </div>
+                @foreach(['tingkat1', 'tingkat2', 'tingkat3', 'tingkat4', 'tingkat5'] as $tingkat)
+                    <div class="col">
+                        <h3>{{ $tingkatTitles[$tingkat] }}</h3>
+                        @if(isset($files[$indikator][$tingkat]) && count($files[$indikator][$tingkat]) > 0)
+                            @foreach($files[$indikator][$tingkat] as $file)
+                                <div>
+                                    <a href="{{ asset('/storage/'.$file->filename) }}">Download File</a><br>
+                                    {{-- Menampilkan status --}}
+                                    <span>
+                                        @if($file->disetujui === null)
+                                            Diperiksa
+                                        @elseif($file->disetujui)
+                                            Disetujui
+                                            @if($file->reason) {{-- Only display reason if it's not null --}}
+                                                <p>Alasan: {{ $file->reason }}</p>
+                                            @endif
+                                        @else
+                                            Tidak Disetujui
+                                            @if($file->reason) {{-- Only display reason if it's not null --}}
+                                                <p>Alasan: {{ $file->reason }}</p>
+                                            @endif
+                                        @endif
+                                    </span>
+                                    @if(Auth::check() && Auth::user()->admin)
+                                    <form method="post" action="{{ route('file.approve', $file->id) }}">
+                                        @csrf
+                                        <textarea name="reason" placeholder="Enter reason for approval (optional)"></textarea>
+                                        <button type="submit" class="btn btn-success">Approve</button>
+                                    </form>
+                                    <form method="post" action="{{ route('file.disapprove', $file->id) }}">
+                                        @csrf
+                                        <textarea name="reason" placeholder="Enter reason for disapproval" required></textarea>
+                                        <button type="submit" class="btn btn-warning">Disapprove</button>
+                                    </form>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @else
+                            <span>No files</span>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+
+            
+            
+        @endforeach
+    </div>
+
+
+    
 
     <section style="height: 45px; background-color: #F5F7FA;">
         {{-- <h1>Romantik</h1> --}}
