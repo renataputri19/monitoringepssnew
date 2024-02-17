@@ -59,128 +59,71 @@
     </section>
     
     
-    <div class="container mt-3">
-        <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                    <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
-                @endforeach
-            </div>
-    
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
-                        <div class="row mb-4">
-                            @foreach($indikatorChunk as $index => $indikator)
-                                @php
-                                $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
-                                // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
-                                @endphp
-                
-                                <div class="col-md-6">
-                                    <div class="card mt-4">
-                                        <div class="card-header">
-                                            <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
-                                        </div>
-                                        <div class="card-body">
-                                            @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
-                                            @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
-                                        
-                                            <div class="row my-3">
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 1-2</h3> --}}
-                                                    @foreach(['tingkat1', 'tingkat2'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
+
+
+
+
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+            {{-- SINI JAGNAN GANGGU --}}
+
+
+
+            <div class="container mt-3">
+                <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                            <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
+                        @endforeach
+                    </div>
+            
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                            <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
+                                <div class="row mb-4">
+                                    @foreach($indikatorChunk as $index => $indikator)
+                                        @php
+                                        $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                                        // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
+                                        @endphp
+                        
+                                        <div class="col-md-6">
+                                            <div class="card mt-4">
+                                                <div class="card-header">
+                                                    <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 3-5</h3> --}}
-                                                    @foreach(['tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                                <div class="card-body">
+                                                    @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
+                                                    @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
+
+                                                    @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
                                                         @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
                                                     @endforeach
+                                                    
+                                                    
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
 
 
-            
-    
-            <!-- Controls -->
-            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button> --}}
-        </div>
-    </div>
-
-
-
-
-    <div class="container section-bukti">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">File bukti Dukung</th>
-                        <th scope="col">Tingkat</th>
-                        <th scope="col">Hasil</th>
-                        <th scope="col">Reasons</th>
-                        <th scope="col">Action</th>
-                        <th scope="col">Last Updated</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Loop through each indikator -->
-                    @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
-                        @php
-                            $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
-                        @endphp
-                        <!-- Assuming you have a way to define the $loop variable -->
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>
-                                <!-- Assuming you have a method to get the file URL -->
-                                <a href="{{ asset('/storage/'.$file->filename) }}" target="_blank">Download File</a>
-                            </td>
-                            <td>{{ $indikatorTitles[$indikator] ?? 'N/A' }}</td>
-                            <td>{{ $indikatorApproval->disetujui ? 'Disetujui' : 'Tidak Disetujui' }}</td>
-                            <td>{{ $indikatorApproval->reason ?? 'N/A' }}</td>
-                            <td>
-                                <!-- Action buttons will trigger a modal for input -->
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#approveModal{{ $indikator }}">Approve</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#disapproveModal{{ $indikator }}">Disapprove</button>
-                            </td>
-                            <td>{{ $indikatorApproval->updated_at ?? 'N/A' }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        
-        <!-- Modals for each indikator -->
-        @foreach(['sds1', 'sds2', 'sds3', 'sds4'] as $indikator)
-            <div class="modal fade" id="approveModal{{ $indikator }}" tabindex="-1" aria-labelledby="approveModalLabel{{ $indikator }}" aria-hidden="true">
-                <!-- Modal content here -->
-            </div>
-            <div class="modal fade" id="disapproveModal{{ $indikator }}" tabindex="-1" aria-labelledby="disapproveModalLabel{{ $indikator }}" aria-hidden="true">
-                <!-- Modal content here -->
-            </div>
-        @endforeach
-    </div>
     
 
 
@@ -291,3 +234,6 @@
 
 
 @endsection
+
+
+
