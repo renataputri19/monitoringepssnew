@@ -75,53 +75,52 @@
             {{-- SINI JAGNAN GANGGU --}}
 
 
+    <section>
+        <div class="container mt-3">
+            <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                        <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
+                    @endforeach
+                </div>
+        
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
+                        <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
+                            <div class="row mb-4">
+                                @foreach($indikatorChunk as $index => $indikator)
+                                    @php
+                                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                                    // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
+                                    @endphp
+                    
+                                    <div class="col-md-6">
+                                        <div class="card mt-4">
+                                            <div class="card-header">
+                                                <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
+                                            </div>
+                                            <div class="card-body">
+                                                @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
+                                                @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
 
-            <div class="container mt-3">
-                <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
-                    <!-- Indicators -->
-                    <div class="carousel-indicators">
-                        @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                            <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
-                        @endforeach
-                    </div>
-            
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                            <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
-                                <div class="row mb-4">
-                                    @foreach($indikatorChunk as $index => $indikator)
-                                        @php
-                                        $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
-                                        // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
-                                        @endphp
-                        
-                                        <div class="col-md-6">
-                                            <div class="card mt-4">
-                                                <div class="card-header">
-                                                    <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
-                                                </div>
-                                                <div class="card-body">
-                                                    @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
-                                                    @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
-
-                                                    @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
-                                                    
-                                                    
-                                                    
-                                                    
-                                                </div>
+                                                @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                                    @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                                @endforeach
+                                                                                                                                            
+                                                
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+        </div>
+    </section>
 
 
     
