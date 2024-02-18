@@ -7,8 +7,8 @@
 
     <section class="section-add-opd">
         <div class="container mt-4">
-            <h1>Edit OPD</h1>
-            <form action="{{ route('opd.update', $opd->id) }}" method="POST" class="needs-validation" novalidate>
+            <h1 data-aos="fade-up">Edit OPD</h1>
+            <form action="{{ route('opd.update', $opd->id) }}" method="POST" class="needs-validation" novalidate data-aos="fade-up">
                 @csrf
                 @method('PUT')
                 

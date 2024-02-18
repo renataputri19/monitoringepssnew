@@ -50,7 +50,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse justify-content-end" style="z-index: 100" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 @if(Request::is('/'))
                     <li class="nav-item">
@@ -81,30 +81,30 @@
                     <!-- More nav items -->
         
                 @else
-                
+                    <!-- Nav items for other pages -->
                     <li class="nav-item">
-                        <a href="{{ url('/epss') }}" class="nav-link">EPSS</a>
+                        <a href="{{ url('/epss') }}" class="nav-link {{ Request::is('epss') ? 'active' : '' }}">EPSS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/sdi') }}" class="nav-link">Prinsip SDI</a>
+                        <a href="{{ url('/sdi') }}" class="nav-link {{ Request::is('sdi') ? 'active' : '' }}">Prinsip SDI</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/kualitas-data') }}" class="nav-link">Kualitas Data</a>
+                        <a href="{{ url('/kualitas-data') }}" class="nav-link {{ Request::is('kualitas-data') ? 'active' : '' }}">Kualitas Data</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/proses-bisnis-statistik') }}" class="nav-link">Proses Bisnis Statistik</a>
+                        <a href="{{ url('/proses-bisnis-statistik') }}" class="nav-link {{ Request::is('proses-bisnis-statistik') ? 'active' : '' }}">Proses Bisnis Statistik</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/kelembagaan') }}" class="nav-link">Kelembagaan</a>
+                        <a href="{{ url('/kelembagaan') }}" class="nav-link {{ Request::is('kelembagaan') ? 'active' : '' }}">Kelembagaan</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/statistik-nasional') }}" class="nav-link">Statistik Nasional</a>
+                        <a href="{{ url('/statistik-nasional') }}" class="nav-link {{ Request::is('statistik-nasional') ? 'active' : '' }}">Statistik Nasional</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard Perencanaan</a>
+                        <a href="{{ url('/dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/list-opd') }}" class="nav-link">List OPD</a>
+                        <a href="{{ url('/list-opd') }}" class="nav-link {{ Request::is('list-opd') ? 'active' : '' }}">List OPD</a>
                     </li>
                     <li class="nav-item">
                         @if(Auth::check())
@@ -123,4 +123,4 @@
             </ul>
         </div>
     </div>
-  </nav>
+</nav>

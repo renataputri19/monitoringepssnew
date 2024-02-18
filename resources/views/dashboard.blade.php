@@ -4,6 +4,20 @@
 
 @section('content')
 
+
+    <section class="section-hero-domain" style="background-color: #F5F7FA;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <h1 class="domain-title text-center">Dashboard Score EPSS</h1>
+                    <p class="domain-text">
+                        Berikut adalah chart dan perkiraan hasil EPSS
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Dashboard Section -->
     <section class="dashboard-section py-5">
         <div class="container">
@@ -11,40 +25,40 @@
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-8" data-aos="fade-up">
                     <div class="chart-container text-center">
-                        <h2 class="dashboard-header">Score: {{ $dashboardData['dashboardScore']  }}</h2>
+                        <h2 class="dashboard-header">Nilai Perkiraan EPSS: {{ $dashboardData['dashboardScore']  }}</h2>
                         <canvas id="dashboardRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
-                    <div class="chart-container">
-                        <h2 class="dashboard-header">SDI Score: {{ $sdiData['sdiScore'] }}</h2>
+                    <div class="chart-container text-center text-center">
+                        <h2 class="dashboard-header">Satu Data Indonesia: {{ $sdiData['sdiScore'] }}</h2>
                         <canvas id="sdiRadarChart" style="width:500px; height:500px;"></canvas>
                         
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
-                    <div class="chart-container">
-                        <h2 class="dashboard-header">KD Score: {{ $kdData['kdScore'] }}</h2>
+                    <div class="chart-container text-center">
+                        <h2 class="dashboard-header">Kualitas Data: {{ $kdData['kdScore'] }}</h2>
                         <canvas id="kdRadarChart" style="width:500px; height:500px;"></canvas> 
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
-                    <div class="chart-container">
-                        <h2 class="dashboard-header">PBS Score: {{ $pbsData['pbsScore'] }}</h2>
+                    <div class="chart-container text-center">
+                        <h2 class="dashboard-header">Proses Bisnis Statistik: {{ $pbsData['pbsScore'] }}</h2>
                         <canvas id="pbsRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4" data-aos="fade-up">
-                    <div class="chart-container">
-                        <h2 class="dashboard-header">Kelembagaan Score: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
+                    <div class="chart-container text-center">
+                        <h2 class="dashboard-header">Kelembagaan: {{ $kelembagaanData['kelembagaanScore'] }}</h2>
                         <canvas id="kelembagaanRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-4 offset-lg-3" data-aos="fade-up">
-                    <div class="chart-container ">
-                        <h2 class="dashboard-header">Statistik Nasional Score: {{ $snData['snScore'] }}</h2>
+                    <div class="chart-container text-center ">
+                        <h2 class="dashboard-header">Statistik Nasional: {{ $snData['snScore'] }}</h2>
                         <canvas id="snRadarChart" style="width:500px; height:500px;"></canvas>
                     </div>
                 </div>
@@ -52,6 +66,8 @@
             </div>
         </div>
     </section>
+
+    
 
     <div class="container-jadwal" data-aos="fade-up">
         <!-- Other content -->
@@ -110,6 +126,12 @@
 
     <!-- More sections for other domains... -->
 
+
+@endsection
+
+
+@section('scripts')
+    
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -394,4 +416,5 @@
             // Initialize more charts for other domains as needed...
         });
     </script>
+
 @endsection

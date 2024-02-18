@@ -24,7 +24,7 @@ class FileController extends Controller
 
         foreach ($request->file('files') as $file) {
             $filename = $file->store('files', 'public'); // Stores file in the 'storage/app/public/files' directory
-
+            
             File::create([
                 'domain' => $domain, // You might want to pass this as another input or use the file name
                 'aspek' => $aspek,

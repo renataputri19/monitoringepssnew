@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label for="file">Upload file:</label>
-                            <input type="file" name="files[]" class="form-control" id="file-sds" multiple required>
+                            <input type="file" name="files[]" class="form-control" id="file" multiple required>
                         </div>
                         <input type="hidden" name="domain" value="kualitas-data">
                         <input type="hidden" name="aspek" value="Relevansi">
@@ -66,6 +66,13 @@
         </div>
     </section>
 
+    {{-- @php
+        $indicators = ['pbs1', 'pbs2', 'pbs3', 'pbs4', 'pbs5', 'pbs6', 'pbs7'];
+        $chunks = array_chunk($indicators, 2);
+        $lastChunkIndex = count($chunks) - 1;
+        $isLastChunkOdd = count($chunks[$lastChunkIndex]) == 1;
+    @endphp --}}
+
     <div class="container mt-3">
         <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
             <!-- Indicators -->
@@ -82,11 +89,15 @@
                         <div class="row mb-4">
                             @foreach($indikatorChunk as $index => $indikator)
                                 @php
-                                $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                                    $indicators = ['pbs1', 'pbs2', 'pbs3', 'pbs4', 'pbs5', 'pbs6', 'pbs7'];
+                                    $chunks = array_chunk($indicators, 2);
+                                    $lastChunkIndex = count($chunks) - 1;
+                                    $isLastChunkOdd = count($chunks[$lastChunkIndex]) == 1;
                                 // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
                                 @endphp
-                
-                                <div class="col-md-6">
+                                
+                                <div class="{{ $isLastChunkOdd && $chunkIndex == $lastChunkIndex ? 'col-lg-6 offset-lg-3' : 'col-lg-6' }}">
                                     <div class="card mt-4">
                                         <div class="card-header">
                                             <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
@@ -95,20 +106,9 @@
                                             @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
                                             @include('partials.indikator_approval_form_pbs', ['indikator' => $indikator])
                                         
-                                            <div class="row my-3">
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 1-2</h3> --}}
-                                                    @foreach(['tingkat1', 'tingkat2'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
-                                                </div>
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 3-5</h3> --}}
-                                                    @foreach(['tingkat3','tingkat4', 'tingkat5'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                            @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                                @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -117,18 +117,11 @@
                     </div>
                 @endforeach
             </div>
-    
-            <!-- Controls -->
-            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#indikatorCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> --}}
+        </div>
     </div>
+
+    <!-- At the bottom of your Blade file that lists the files -->
+    @include('partials.approval_modal')
 
     <section style="height: 45px; background-color: #F5F7FA;">
         {{-- <h1>Romantik</h1> --}}

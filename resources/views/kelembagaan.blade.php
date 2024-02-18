@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="file">Upload file:</label>
-                            <input type="file" name="files[]" class="form-control" id="file-sds" multiple required>
+                            <input type="file" name="files[]" class="form-control" id="file" multiple required>
                         </div>
                         <input type="hidden" name="domain" value="kualitas-data">
                         <input type="hidden" name="aspek" value="Relevansi">
@@ -87,7 +87,7 @@
                                 // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
                                 @endphp
                 
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="card mt-4">
                                         <div class="card-header">
                                             <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
@@ -96,20 +96,9 @@
                                             @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
                                             @include('partials.indikator_approval_form_kelembagaan', ['indikator' => $indikator])
                                         
-                                            <div class="row my-3">
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 1-2</h3> --}}
-                                                    @foreach(['tingkat1', 'tingkat2'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
-                                                </div>
-                                                <div class="col-md-6">
-                                                    {{-- <h3>Files Tingkat 3-5</h3> --}}
-                                                    @foreach(['tingkat3','tingkat4', 'tingkat5'] as $tingkat)
-                                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                            @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                                @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -130,6 +119,9 @@
             </button>
         </div> --}}
     </div>
+
+    <!-- At the bottom of your Blade file that lists the files -->
+    @include('partials.approval_modal')
 
     <section style="height: 45px; background-color: #F5F7FA;">
         {{-- <h1>Romantik</h1> --}}

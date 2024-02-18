@@ -7,8 +7,8 @@
 @section('content')
     <section class="section-add-opd">
         <div class="container mt-4">
-            <h1>Create New OPD</h1>
-            <form action="{{ route('opd.store') }}" method="POST">
+            <h1 data-aos="fade-up">Tambahkan OPD</h1>
+            <form action="{{ route('opd.store') }}" method="POST" data-aos="fade-up">
                 @csrf
                 <div class="form-group mb-3">
                     <label for="full_name">Nama Lengkap:</label>

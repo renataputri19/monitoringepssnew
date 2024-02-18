@@ -8,11 +8,11 @@
     <section class="section-list-opd" aria-labelledby="list-opd-heading">
 
         <div class="container mt-5">
-            <h2 id="list-opd-heading">List OPD</h2>
+            <h2 id="list-opd-heading" data-aos="fade-up">List OPD</h2>
             <div class="mb-2 text-center">
-                <a href="{{ route('opd.create') }}" class="btn btn-success" role="button">Add New</a>
+                <a href="{{ route('opd.create') }}" class="btn btn-success" role="button" data-aos="fade-up">Add New</a>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" data-aos="fade-up">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -31,7 +31,7 @@
                                 <td>{{ $opd->institution }}</td>
                                 <td>{{ $opd->phone_number }}</td>
                                 <td>
-                                    <a href="{{ route('opd.edit', $opd->id) }}" class="btn btn-primary" role="button">Update</a>
+                                    <a href="{{ route('opd.edit', $opd->id) }}" class="btn btn-primary role="button">Update</a>
                                     <form action="{{ route('opd.destroy', $opd->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

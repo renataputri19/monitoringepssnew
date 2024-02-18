@@ -62,7 +62,7 @@
                                 <li>Interoperabilitas Data</li>
                                 <li>Kode Referensi dan/atau Data Induk</li>
                             </ul>
-                            <a href="http://monitoringepss.test/sdi" class="stretched-link">File Bukti Dukung...</a>
+                            <a href="/sdi" class="stretched-link">File Bukti Dukung...</a>
                         </div>
                     </div>
                     <!-- Kualitas Data Column -->
@@ -76,7 +76,7 @@
                                 <li>Aksesibilitas</li>
                                 <li>Keterbandingan & Konsistensi</li>
                             </ul>
-                            <a href="http://monitoringepss.test/kualitas-data" class="stretched-link">File Bukti Dukung...</a>
+                            <a href="/kualitas-data" class="stretched-link">File Bukti Dukung...</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                                 <li>Pemeriksaan Data</li>
                                 <li>Penyebarluasan Data</li>
                             </ul>
-                            <a href="http://monitoringepss.test/proses-bisnis-statistik" class="stretched-link">File Bukti Dukung...</a>
+                            <a href="/proses-bisnis-statistik" class="stretched-link">File Bukti Dukung...</a>
                         </div>
                     </div>
                     <!-- Kelembagaan Column -->
@@ -109,7 +109,7 @@
                                 <li>SDM yang Memadai dan Kapabel</li>
                                 <li>Pengorganisasian Statistik</li>
                             </ul>
-                            <a href="http://monitoringepss.test/kelembagaan" class="stretched-link">File Bukti Dukung...</a>
+                            <a href="/kelembagaan" class="stretched-link">File Bukti Dukung...</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                                 <li>Pengolahan Kegiatan Statistik</li>
                                 <li>Penguatan SSN Berkelanjutan</li>
                             </ul>
-                            <a href="http://monitoringepss.test/statistik-nasional" class="stretched-link">File Bukti Dukung...</a>
+                            <a href="/statistik-nasional" class="stretched-link">File Bukti Dukung...</a>
                         </div>
                     </div>
                 </div>

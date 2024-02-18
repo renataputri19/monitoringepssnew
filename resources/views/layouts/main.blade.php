@@ -19,6 +19,8 @@
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
+
+
     <body>
         <header style="height: 59px; background-color: #FFFFFF;">
             @include('partials.navbar')
@@ -32,21 +34,27 @@
 
         
     </body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200, // offset from the original trigger point
+        duration: 600, // duration of the animation
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+      });
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/carousel-js.js') }}"></script>
+    
+    
+    @yield('scripts')
+
+
+
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    offset: 200, // offset from the original trigger point
-    duration: 600, // duration of the animation
-    once: true, // whether animation should happen only once - while scrolling down
-    mirror: false, // whether elements should animate out while scrolling past them
-    anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-  });
-</script>
 
-    <!-- Include Bootstrap JS and jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/carousel-js.js') }}"></script>

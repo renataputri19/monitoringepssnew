@@ -32,4 +32,8 @@
       margin-top: 0; /* Removes additional top margin from navbar-nav */
     }
   }
+
+  .nav-link.active {
+    text-decoration: underline;
+}
   

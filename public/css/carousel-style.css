@@ -1,5 +1,7 @@
 #indikatorCarousel .carousel-indicators button {
-    background-color: black; /* This will make the buttons black */
+    background-color: #34568B; /* This will make the buttons black */
+    width: 40px;
+    height: 20px;
 }
 
 .carousel-control-prev,
