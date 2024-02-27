@@ -12,33 +12,36 @@ class FileController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'files.*' => 'required|file',
+            'files.*' => 'required|file|mimes:pdf|max:10240', // mimes:pdf ensures only PDF files are accepted and max:10240 limits the size to 10MB
         ]);
-
+    
         // Get the hidden fields
         $domain = $request->input('domain');
         $aspek = $request->input('aspek');
         $indikator = $request->input('indikator');
         $tingkat = $request->input('tingkat');
         $disetujui = $request->input('disetujui');
-
+    
         foreach ($request->file('files') as $file) {
-            $filename = $file->store('files', 'public'); // Stores file in the 'storage/app/public/files' directory
-            
+            // Use getClientOriginalName() to get the real name of the file
+            $filenameWithExtension = $file->getClientOriginalName();
+    
+            // Store the file in the 'storage/app/public/files' directory with the original name
+            $path = $file->storeAs('files', $filenameWithExtension, 'public');
+    
             File::create([
-                'domain' => $domain, // You might want to pass this as another input or use the file name
+                'domain' => $domain,
                 'aspek' => $aspek,
                 'indikator' => $indikator,
                 'tingkat' => $tingkat,
                 'disetujui' => $disetujui,
-                'filename' => $filename,
+                'filename' => $path, // This will save the path with the original file name
             ]);
         }
-
-        
-
+    
         return back()->with('success', 'Files have been uploaded successfully');
     }
+    
 
     public function approve(Request $request, $id)
     {

@@ -47,6 +47,11 @@
                         <div class="form-group">
                             <label for="file">Upload file:</label>
                             <input type="file" name="files[]" class="form-control" id="file" multiple required>
+                            @error('files.*')
+                                <div class="alert alert-danger mt-1">
+                                    <p> File Harus PDF and maks 10mb </p>
+                                </div>
+                            @enderror
                         </div>
                         <input type="hidden" name="domain" value="kualitas-data">
                         <input type="hidden" name="aspek" value="Relevansi">

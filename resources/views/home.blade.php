@@ -94,29 +94,13 @@
     </div>
   </section>
 
-  <section id="simbatik" class="simbatik-section py-5" style="background-color: #ffffff;">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <h2 data-aos="fade-up">Sistem Simbatik</h2>
-          <p data-aos="fade-up">Sistem Simbatik adalah platform untuk mengunggah dokumen yang berkaitan dengan indikator EPSS. Ini memudahkan proses dokumentasi dan verifikasi.</p>
-        </div>
-        <div class="col-lg-6 d-flex justify-content-center">
-          <div class="card rounded-lg shadow p-4" style="background-color: #F5F7FA;" data-aos="fade-up">
-            <h3>Apikasi Evaluasi Penyelenggaraan Statistik Sektoral</h3>
-            <p>Dalam rangka untuk meningkatkan kualitas penyelenggaraan statistik sektoral secara efektif, efisien, dan berkesinambungan, perlu dilakukan Evaluasi terhadap Penyelenggaraan Statistik Sektoral dengan mengukur kapabilitas penyelenggaraan statistik sektoral pada Instansi Pusat dan Pemerintah Daerah dengan ukuran tingkat kematangan (maturity level).</p>
-            <a href="https://webapps.bps.go.id/simbatik/" class="btn btn-primary">Mulai Pengisian</a>
-            <!-- Change the href to your actual link -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  
   <section id="indah" class="indah-section py-5" style="background-color: #F5F7FA;">
     <div class="container">
       <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-up">
+          <h2 class="mt-md-0 mt-4">Sistem Indah</h2>
+          <p>Sistem Indah digunakan untuk pengelolaan metadata statistik. Sistem ini memastikan bahwa data yang disediakan akurat dan dapat diakses oleh lembaga yang memerlukannya.</p>
+        </div>
         <div class="col-lg-6">
           <div class="rounded-lg p-4" style="background-color: #ffffff;" data-aos="fade-up">
             <h2>Indonesia Data Hub (INDAH)</h2>
@@ -126,13 +110,32 @@
             <a href="https://indah.bps.go.id/" class="btn btn-primary">Kunjungi INDAH</a>
           </div>
         </div>
-        <div class="col-lg-6" data-aos="fade-up">
-          <h2 class="mt-md-0 mt-4">Sistem Indah</h2>
-          <p>Sistem Indah digunakan untuk pengelolaan metadata statistik. Sistem ini memastikan bahwa data yang disediakan akurat dan dapat diakses oleh lembaga yang memerlukannya.</p>
-        </div>
       </div>
     </div>
   </section>
+
+  <section id="simbatik" class="simbatik-section py-5" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 d-flex justify-content-center">
+          <div class="card rounded-lg shadow p-4" style="background-color: #F5F7FA;" data-aos="fade-up">
+            <h3>Apikasi Evaluasi Penyelenggaraan Statistik Sektoral</h3>
+            <p>Dalam rangka untuk meningkatkan kualitas penyelenggaraan statistik sektoral secara efektif, efisien, dan berkesinambungan, perlu dilakukan Evaluasi terhadap Penyelenggaraan Statistik Sektoral dengan mengukur kapabilitas penyelenggaraan statistik sektoral pada Instansi Pusat dan Pemerintah Daerah dengan ukuran tingkat kematangan (maturity level).</p>
+            <a href="https://webapps.bps.go.id/simbatik/" class="btn btn-primary">Mulai Pengisian</a>
+            <!-- Change the href to your actual link -->
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h2 data-aos="fade-up">Sistem Simbatik</h2>
+          <p data-aos="fade-up">Sistem Simbatik adalah platform untuk mengunggah dokumen yang berkaitan dengan indikator EPSS. Ini memudahkan proses dokumentasi dan verifikasi.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  
+
   
 
 
