@@ -91,7 +91,7 @@
                                 // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
                                 @endphp
                 
-                                <div class="col-md-6">
+                                <div class="col-xxl-6">
                                     <div class="card mt-4">
                                         <div class="card-header">
                                             <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>

@@ -101,7 +101,7 @@
                                     // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
                                     @endphp
                     
-                                    <div class="col-lg-6">
+                                    <div class="col-xxl-6">
                                         <div class="card mt-4">
                                             <div class="card-header">
                                                 <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
@@ -123,6 +123,15 @@
                         </div>
                     @endforeach
                 </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
             </div>
         </div>
     </section>

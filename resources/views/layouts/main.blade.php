@@ -11,18 +11,21 @@
         <link href="{{ asset('css/carousel-style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <link href="{{ asset('css/list-opd.css') }}" rel="stylesheet">
-
+        
+        
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
         {{-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
 
 
-    <body>
-        <header style="height: 59px; background-color: #FFFFFF;">
+    <body id="body-pd" class="body-pd">
+        <header style="height: 59px; background-color: #FFFFFF;">  
             @include('partials.navbar')
         </header>
 
@@ -52,6 +55,7 @@
     
     
     @yield('scripts')
+    @yield('script.navbar')
 
 
 
