@@ -183,11 +183,11 @@
                     <a href="{{ url('/epss') }}" class="nav_link {{ Request::is('epss') ? 'active' : '' }}"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_title">EPSS</span> </a> 
                     <!-- Dropdown for DOMAIN group -->
                     <div class="nav_item">
-                        <a href="#" class="nav_link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#domain-dropdown" aria-expanded="false">
+                        <a href="#" class="nav_link dropdown-toggle {{ Request::is('sdi') || Request::is('kualitas-data') || Request::is('proses-bisnis-statistik') || Request::is('kelembagaan') || Request::is('statistik-nasional') ? '' : 'collapsed' }}" data-bs-toggle="collapse" data-bs-target="#domain-dropdown" aria-expanded="{{ Request::is('sdi') || Request::is('kualitas-data') || Request::is('proses-bisnis-statistik') || Request::is('kelembagaan') || Request::is('statistik-nasional') ? 'true' : 'false' }}">
                             <i class='bx bx-folder nav_icon'></i>
                             <span class="nav_title">DOMAIN</span>
                         </a>
-                        <div id="domain-dropdown" class="collapse">
+                        <div id="domain-dropdown" class="{{ Request::is('sdi') || Request::is('kualitas-data') || Request::is('proses-bisnis-statistik') || Request::is('kelembagaan') || Request::is('statistik-nasional') ? 'collapse show' : 'collapse' }}">
                             <a href="{{ url('/sdi') }}" class="nav_link sub_link {{ Request::is('sdi') ? 'active' : '' }}">
                                 <i class='bx bxs-data nav_icon '></i><span>SDI</span>
                             
@@ -203,11 +203,11 @@
                     </div>
 
                     <div class="nav_item">
-                        <a href="#" class="nav_link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#perencanaan-dropdown" aria-expanded="false">
+                        <a href="#" class="nav_link dropdown-toggle {{ Request::is('dashboard') || Request::is('list-opd')  ? '' : 'collapsed' }}" data-bs-toggle="collapse" data-bs-target="#perencanaan-dropdown" aria-expanded=" {{ Request::is('dashboard') || Request::is('list-opd') ? 'true' : 'false' }}">
                             <i class='bx bxs-dashboard nav_icon'></i>
                             <span class="nav_title">PERENCANAAN</span>
                         </a>
-                        <div id="perencanaan-dropdown" class="collapse">
+                        <div id="perencanaan-dropdown" class="{{  Request::is('dashboard') || Request::is('list-opd') ? 'collapse show' : 'collapse' }}">
                             <a href="{{ url('/dashboard') }}" class="nav_link sub_link {{ Request::is('dashboard') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
                             <a href="{{ url('/list-opd') }}" class="nav_link sub_link {{ Request::is('list-opd') ? 'active' : '' }}"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">List OPD</span> </a> 
                     
