@@ -81,57 +81,33 @@
 
 
     <section>
-        <div class="container mt-3">
-            <div id="indikatorCarousel" class="carousel slide" data-interval="false" data-aos="fade-up">
-                <!-- Indicators -->
-                <div class="carousel-indicators">
-                    @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                        <button type="button" data-bs-target="#indikatorCarousel" data-bs-slide-to="{{ $chunkIndex }}" class="{{ $chunkIndex == 0 ? 'active' : '' }}" aria-current="{{ $chunkIndex == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $chunkIndex + 1 }}"></button>
-                    @endforeach
-                </div>
-        
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 2) as $chunkIndex => $indikatorChunk)
-                        <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}" data-interval="false">
-                            <div class="row mb-4">
-                                @foreach($indikatorChunk as $index => $indikator)
-                                    @php
-                                    $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
-                                    // $backgroundColor = $index % 2 === 0 ? '#F5F7FA' : '#FFFFFF';
-                                    @endphp
-                    
-                                    <div class="col-xxl-6">
-                                        <div class="card mt-4">
-                                            <div class="card-header">
-                                                <h2 style="text-align: center;">{{ $indikatorTitles[$indikator] }}</h2>
-                                            </div>
-                                            <div class="card-body">
-                                                @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
-                                                @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
+        <div class="container mt-3 mb-3">
+            <div class="accordion" id="accordionExample">
+                @foreach(array_chunk(['sds1', 'sds2', 'sds3', 'sds4'], 1) as $chunkIndex => $indikatorChunk)
+                    @foreach($indikatorChunk as $index => $indikator)
+                        @php
+                            $indikatorApproval = \App\Models\IndikatorApproval::where('indikator', $indikator)->first();
+                            $accordionId = "collapse-" . $loop->parent->index . "-" . $loop->index;
+                        @endphp
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ $accordionId }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $accordionId }}" aria-expanded="false" aria-controls="{{ $accordionId }}">
+                                    <h4>{{ $loop->parent->iteration }}. {{ $indikatorTitles[$indikator] ?? 'Unknown Title' }}</h4>
+                                </button>
+                            </h2>
+                            <div id="{{ $accordionId }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $accordionId }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @include('partials.indikator_approval_status', ['indikatorApproval' => $indikatorApproval])
+                                    @include('partials.indikator_approval_form_sdi', ['indikator' => $indikator])
 
-                                                @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
-                                                    @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
-                                                @endforeach
-                                                                                                                                            
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    @foreach(['tingkat1', 'tingkat2','tingkat3','tingkat4', 'tingkat5'] as $tingkat)
+                                        @include('partials.file_item', ['files' => $files[$indikator][$tingkat] ?? [], 'tingkat' => $tingkat])
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
+                @endforeach
             </div>
         </div>
     </section>
@@ -139,17 +115,6 @@
     <!-- At the bottom of your Blade file that lists the files -->
     @include('partials.approval_modal')
     
-
-
-    
-
-        
-
-    <section style="height: 45px; background-color: #F5F7FA;">
-        {{-- <h1>Romantik</h1> --}}
-        <!-- Other Romantik content goes here -->
-    </section>
-
 
 
 @endsection

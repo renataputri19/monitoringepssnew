@@ -24,19 +24,23 @@
     </head>
 
 
-    <body id="body-pd" class="body-pd">
-        <header style="height: 59px; background-color: #FFFFFF;">  
-            @include('partials.navbar')
-        </header>
+    @if(Auth::check())
+        <body id="body-pd" class="body-pd">
+    @else
+        <body>
+    @endif
+            <header>  
+                @include('partials.navbar')
+            </header>
 
-        @yield('content')
+            @yield('content')
 
-        <footer id="hubungi-kami" style="height: 229px; background-color: #263238;">
-            @include('partials.footer')
-        </footer>
+            <footer id="hubungi-kami" style="height: 229px; background-color: #263238;">
+                @include('partials.footer')
+            </footer>
 
         
-    </body>
+        </body>
 
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

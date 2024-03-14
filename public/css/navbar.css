@@ -12,9 +12,7 @@
   
   /* Responsive behavior for navbar collapse */
   @media (max-width: 991px) {
-    .navbar {
-      margin-bottom: 1rem; /* Add some space below the navbar */
-    }
+    
     
     .navbar-toggler {
       /* Styles for the toggler button if necessary */

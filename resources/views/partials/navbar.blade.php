@@ -173,31 +173,64 @@
 @else
     <header class="header body-pd" id="header" >
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="{{ asset('img/Logo BPS Kota Batam Artboard 1 .png') }}" alt="BPS Kota Batam Logo" height="70"> </div>
+                
+    
     </header>
-    <div class="l-navbar show" id="nav-bar" >
+    <div class="l-navbar show_side" id="nav-bar" >
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>
+            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MONITA</span> </a>
                 <div class="nav_list"> 
-                    <a href="{{ url('/epss') }}" class="nav_link {{ Request::is('epss') ? 'active' : '' }}"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">EPSS</span> </a> 
-                    <a href="{{ url('/sdi') }}" class="nav_link {{ Request::is('sdi') ? 'active' : '' }}"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">SDI</span> </a> 
-                    <a href="{{ url('/kualitas-data') }}" class="nav_link {{ Request::is('kualitas-data') ? 'active' : '' }}"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">KD</span> </a> 
-                    <a href="{{ url('/proses-bisnis-statistik') }}" class="nav_link  {{ Request::is('proses-bisnis-statistik') ? 'active' : '' }}"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">PBS</span> </a> 
-                    <a href="{{ url('/kelembagaan') }}" class="nav_link  {{ Request::is('kelembagaan') ? 'active' : '' }}"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Kelembagaan</span> </a> 
-                    <a href="{{ url('/statistik-nasional') }}" class="nav_link  {{ Request::is('statistik-nasional') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">SN</span> </a> 
-                    <a href="{{ url('/dashboard') }}" class="nav_link  {{ Request::is('dashboard') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
-                    <a href="{{ url('/list-opd') }}" class="nav_link  {{ Request::is('list-opd') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">List OPD</span> </a> 
+                    <a href="{{ url('/epss') }}" class="nav_link {{ Request::is('epss') ? 'active' : '' }}"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_title">EPSS</span> </a> 
+                    <!-- Dropdown for DOMAIN group -->
+                    <div class="nav_item">
+                        <a href="#" class="nav_link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#domain-dropdown" aria-expanded="false">
+                            <i class='bx bx-folder nav_icon'></i>
+                            <span class="nav_title">DOMAIN</span>
+                        </a>
+                        <div id="domain-dropdown" class="collapse">
+                            <a href="{{ url('/sdi') }}" class="nav_link sub_link {{ Request::is('sdi') ? 'active' : '' }}">
+                                <i class='bx bxs-data nav_icon '></i><span>SDI</span>
+                            
+                                
+                            </a>
+                            <a href="{{ url('/kualitas-data') }}" class="nav_link sub_link  {{ Request::is('kualitas-data') ? 'active' : '' }}"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">KD</span> </a> 
+                            <a href="{{ url('/proses-bisnis-statistik') }}" class="nav_link sub_link  {{ Request::is('proses-bisnis-statistik') ? 'active' : '' }}"> <i class='bx bxs-business nav_icon'></i> <span class="nav_name">PBS</span> </a> 
+                            <a href="{{ url('/kelembagaan') }}" class="nav_link sub_link  {{ Request::is('kelembagaan') ? 'active' : '' }}"> <i class='bx bx-world nav_icon'></i> <span class="nav_name">Kelembagaan</span> </a> 
+                            <a href="{{ url('/statistik-nasional') }}" class="nav_link sub_link  {{ Request::is('statistik-nasional') ? 'active' : '' }}"> <i class='bx bx-stats nav_icon'></i> <span class="nav_name">SN</span> </a> 
+                        
+                            <!-- Add more links for this group -->
+                        </div>
+                    </div>
+
+                    <div class="nav_item">
+                        <a href="#" class="nav_link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#perencanaan-dropdown" aria-expanded="false">
+                            <i class='bx bxs-dashboard nav_icon'></i>
+                            <span class="nav_title">PERENCANAAN</span>
+                        </a>
+                        <div id="perencanaan-dropdown" class="collapse">
+                            <a href="{{ url('/dashboard') }}" class="nav_link sub_link {{ Request::is('dashboard') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
+                            <a href="{{ url('/list-opd') }}" class="nav_link sub_link {{ Request::is('list-opd') ? 'active' : '' }}"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">List OPD</span> </a> 
+                    
+                        
+                            <!-- Add more links for this group -->
+                        </div>
+                    </div>
+                    
+                    
                     <a href="{{ route('logout') }}" 
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                        class="nav-link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Logout</span></a>
+                        class="nav-link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Logout</span></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form>
-                    
+                        </form>             
                 
+              
+                    
+
+
                 </div>
             </div> 
-            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+            {{-- <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a> --}}
             
         </nav>
     </div>
@@ -206,9 +239,10 @@
     <!-- ... -->
     @section('script.navbar')
         <script>
+            
             document.addEventListener("DOMContentLoaded", function(event) {
     
-                const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+                const show_sideNavbar = (toggleId, navId, bodyId, headerId) =>{
                     const toggle = document.getElementById(toggleId),
                     nav = document.getElementById(navId),
                     bodypd = document.getElementById(bodyId),
@@ -217,8 +251,8 @@
                     // Validate that all variables exist
                     if(toggle && nav && bodypd && headerpd){
                         toggle.addEventListener('click', ()=>{
-                        // show navbar
-                        nav.classList.toggle('show')
+                        // show_side navbar
+                        nav.classList.toggle('show_side')
                         // change icon
                         toggle.classList.toggle('bx-x')
                         // add padding to body
@@ -229,7 +263,8 @@
                     }
                 }
                 
-                showNavbar('header-toggle','nav-bar','body-pd','header')
+                show_sideNavbar('header-toggle','nav-bar','body-pd','header')
+
                 
                 /*===== LINK ACTIVE =====*/
                 const linkColor = document.querySelectorAll('.nav_link')
