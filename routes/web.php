@@ -14,6 +14,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KelembagaanController;
+use App\Http\Controllers\PerencanaanController;
 use App\Http\Controllers\IndikatorApprovalController;
 
 /*
@@ -55,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/opd/create', [OpdController::class, 'create'])->name('opd.create');
     Route::get('/opd/{id}/edit', [OpdController::class, 'edit'])->name('opd.edit');
     Route::put('/opd/{id}', [OpdController::class, 'update'])->name('opd.update');
+    
 
     Route::post('/opd', [OpdController::class, 'store'])->name('opd.store');
 
@@ -70,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/files/{file}', [FileController::class, 'destroy'])->name('files.destroy');
     
     Route::get('/dashboard', [DashboardController::class, 'calculateScores'])->name('dashboard');
+    Route::get('/perencanaan', [PerencanaanController::class, 'perencanaan'])->name('perencanaan');
     
     
     Route::post('/indikator-approval', [IndikatorApprovalController::class, 'approve'])->name('indikator.approve');

@@ -178,7 +178,8 @@
     </header>
     <div class="l-navbar show_side" id="nav-bar" >
         <nav class="nav">
-            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MONITA</span> </a>
+            <div class="nav_space"> 
+                <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MONITA</span> </a>
                 <div class="nav_list"> 
                     <a href="{{ url('/epss') }}" class="nav_link {{ Request::is('epss') ? 'active' : '' }}"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_title">EPSS</span> </a> 
                     <!-- Dropdown for DOMAIN group -->
@@ -203,23 +204,26 @@
                     </div>
 
                     <div class="nav_item">
-                        <a href="#" class="nav_link dropdown-toggle {{ Request::is('dashboard') || Request::is('list-opd')  ? '' : 'collapsed' }}" data-bs-toggle="collapse" data-bs-target="#perencanaan-dropdown" aria-expanded=" {{ Request::is('dashboard') || Request::is('list-opd') ? 'true' : 'false' }}">
+                        <a href="#" class="nav_link dropdown-toggle {{ Request::is('dashboard') || Request::is('list-opd') || Request::is('perencanaan')  ? '' : 'collapsed' }}" data-bs-toggle="collapse" data-bs-target="#perencanaan-dropdown" aria-expanded=" {{ Request::is('dashboard') || Request::is('list-opd') || Request::is('perencanaan')  ? 'true' : 'false' }}">
                             <i class='bx bxs-dashboard nav_icon'></i>
                             <span class="nav_title">PERENCANAAN</span>
                         </a>
-                        <div id="perencanaan-dropdown" class="{{  Request::is('dashboard') || Request::is('list-opd') ? 'collapse show' : 'collapse' }}">
+                        <div id="perencanaan-dropdown" class="{{  Request::is('dashboard') || Request::is('list-opd') || Request::is('perencanaan') ? 'collapse show' : 'collapse' }}">
                             <a href="{{ url('/dashboard') }}" class="nav_link sub_link {{ Request::is('dashboard') ? 'active' : '' }}"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
-                            <a href="{{ url('/list-opd') }}" class="nav_link sub_link {{ Request::is('list-opd') ? 'active' : '' }}"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">List OPD</span> </a> 
+                            <a href="{{ url('/perencanaan') }}" class="nav_link sub_link {{ Request::is('perencanaan') ? 'active' : '' }}"> <i class='bx bx-calendar-exclamation nav_icon'></i> <span class="nav_name">Kegiatan</span> </a> 
+                            <a href="{{ url('/list-opd') }}" class="nav_link sub_link {{ Request::is('list-opd') ? 'active' : '' }}"> <i class='bx bx-list-ul nav_icon'></i> <span class="nav_name">Pendataan OPD</span> </a> 
                     
                         
                             <!-- Add more links for this group -->
                         </div>
                     </div>
+
+                    
                     
                     
                     <a href="{{ route('logout') }}" 
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                        class="nav-link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Logout</span></a>
+                        class="nav-link logout-link"> <i class='bx bx-log-out nav_icon_logout'></i> <span class="nav_logout">LOGOUT</span></a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>             

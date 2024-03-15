@@ -96,6 +96,17 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.nav {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .nav_logo, .nav_link {
@@ -123,6 +134,31 @@ a {
 
 .nav_title{
     font-weight: bolder;
+}
+
+.nav_logout{
+    font-weight: bolder;
+    font-size: 1.1rem; /* Slightly larger text for readability */
+}
+
+.logout-link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-weight: bolder;
+    color: var(--white-color);
+    transition: background-color 0.3s ease;
+    border-radius: 4px; /* Optional for rounded corners */
+    text-transform: uppercase; /* Optional preference for style */
+}
+
+.logout-link:hover {
+    background-color: var(--first-color-light); /* Lighter shade for hover effect */
+}
+
+.nav_icon_logout {
+    font-size: 24px; /* Larger icon for better visibility */
+    margin-right: 8px;
 }
 
 .nav_link {
@@ -178,6 +214,10 @@ a {
     padding-left: 2rem; /* Indent sub-items for better visual hierarchy */
 }
 
+.nav_space{
+    padding: 2em 0.2em 2em 0.2em;
+}
+
 /* Media Queries */
 @media screen and (min-width: 768px) {
     .body-pd {
@@ -208,6 +248,6 @@ a {
     }
 
     .body-pd {
-        padding-left: calc(var(--nav-width) + 188px);
+        padding-left: calc(var(--nav-width) + 172px);
     }
 }

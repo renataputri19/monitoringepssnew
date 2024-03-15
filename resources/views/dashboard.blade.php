@@ -9,9 +9,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-12">
-                    <h1 class="domain-title text-center">Dashboard Score EPSS</h1>
+                    <h1 class="domain-title text-center">Dashboard Evaluasi Perkiraan Nilai EPSS 2024</h1>
                     <p class="domain-text">
-                        Berikut adalah chart dan perkiraan hasil EPSS
+                        Dashboard ini menyajikan nilai perkiraan menyeluruh atas nilai Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) yang menggambarkan kinerja dalam berbagai dimensi penting di EPSS. Tujuan dari penyajian ini adalah untuk memberikan dasar dalam merancang strategi perencanaan nilai EPSS tahun 2024, dengan memfokuskan pada area yang memerlukan peningkatan.
                     </p>
                 </div>
             </div>
@@ -69,22 +69,6 @@
 
     
 
-    <div class="container-jadwal" data-aos="fade-up">
-        <!-- Other content -->
-        
-        <h2 class="text-center mb-4">Dashboard Perencanaan Statistik Sektoral 2024</h2>
-        <div class="text-center mb-4">
-            <a href="https://docs.google.com/spreadsheets/d/1IIvd6kYLBMrfgjXQkLBo9J8CubXH-zbibo3yjGIiGV8/edit?usp=sharing" target="_blank" class="btn btn-primary">Open Spreadsheet</a>
-        </div>
-    
-        <!-- Responsive iframe wrapper -->
-        <div class="iframe-container">
-            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSfE1jKTssJ7TmRKyEu_ExixFdZRdCoSv2CFU1bUQpZsE1mdlC-q1_8kB_RkjEELKFLxJR_yRxGYjWl/pubhtml?gid=1115838130&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-        </div>
-        
-        <!-- Other content -->
-    </div>
-    
 
 
     {{-- <!-- Dashboard Score Section -->

@@ -36,3 +36,13 @@ footer a {
 footer a:hover {
   color: #0056b3; /* Darker shade for hover state */
 }
+
+.full_body{
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  width: calc(100% + 2rem); /* Adjust the calc() value to match the body's padding */
+  margin-left: -1rem; /* Half of the calc() value above, but negative */
+  margin-right: -1rem; /* Half of the calc() value above, but negative */
+  /* Your other footer styles */
+}

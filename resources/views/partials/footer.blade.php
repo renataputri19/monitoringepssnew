@@ -48,7 +48,7 @@
       <!--Grid row-->
     </div>
   
-    <div class="text-center p-3 bg-dark text-white">
+    <div class="text-center full_body p-3 bg-dark text-white">
       © 2024 BPS Kota Batam:
       <a class="text-white" href="https://batamkota.bps.go.id/">batamkota.bps.go.id</a>
     </div>

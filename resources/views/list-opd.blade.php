@@ -5,12 +5,25 @@
 
 @section('content')
 
+
+    <section class="section-hero-domain" style="background-color: #F5F7FA;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <h1 class="domain-title text-center">Pendataan Organisasi Perangkat Daerah (OPD)</h1>
+                <p class="domain-text">
+                    List OPD ini dirancang sebagai database interaktif yang menampung informasi kontak penting dari berbagai instansi pemerintah daerah. Database ini bertujuan untuk menyederhanakan dan mempercepat proses komunikasi antar-instansi, khususnya dalam konteks peningkatan nilai Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) untuk tahun 2024. Dengan mengintegrasikan data kontak yang mudah diakses dan diperbarui, setiap instansi dapat dengan cepat mengidentifikasi dan menghubungi pihak terkait untuk berkolaborasi, berdiskusi, dan menyelesaikan kebutuhan informasi atau data yang diperlukan dalam rangka meningkatkan kualitas pengelolaan data statistik mereka.
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>
+
     <section class="section-list-opd" aria-labelledby="list-opd-heading">
 
-        <div class="container mt-5">
-            <h2 id="list-opd-heading" data-aos="fade-up">List OPD</h2>
+        <div class="container mt-2">
             <div class="mb-2 text-center">
-                <a href="{{ route('opd.create') }}" class="btn btn-success" role="button" data-aos="fade-up">Add New</a>
+                <a href="{{ route('opd.create') }}" class="btn btn-success" role="button" data-aos="fade-up">Tambahkan OPD</a>
             </div>
             <div class="table-responsive" data-aos="fade-up">
                 <table class="table table-bordered">
