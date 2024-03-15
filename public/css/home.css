@@ -66,7 +66,7 @@
 /* Custom styles for the icons */
 .icon-container img {
     width: 171px;
-    height: 171px;
+    /* height: 171px; */
     border-radius: 50%;
     background-color: #eaeaea;
     display: block;
