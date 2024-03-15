@@ -144,7 +144,7 @@ select {
 
 .section-hero-domain {
     background-color: #F5F7FA; /* Sets the background color to the light grey as previous sections */
-    padding: 8rem 0.2em 1em 0.2em; /* Adds top and bottom padding */
+    padding: 10rem 0.2em 1em 0.2em; /* Adds top and bottom padding */
 }
 
 .domain-title {
