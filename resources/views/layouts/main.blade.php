@@ -60,6 +60,56 @@
     
     @yield('scripts')
     @yield('script.navbar')
+    
+    <script>
+        function validateFiles() {
+            let fileInput = document.getElementById('file');
+            let fileError = document.getElementById('file-error');
+            fileError.style.display = 'none'; // Hide error message
+    
+            for (let i = 0; i < fileInput.files.length; i++) {
+                let file = fileInput.files[i];
+                
+                // Check if the file is a PDF
+                if (file.type !== 'application/pdf') {
+                    fileError.style.display = 'block'; // Show error message
+                    fileInput.value = ''; // Reset file input
+                    return;
+                }
+    
+                // Check if the file size is more than 10MB
+                if (file.size > 10 * 1024 * 1024) {
+                    fileError.style.display = 'block'; // Show error message
+                    fileInput.value = ''; // Reset file input
+                    return;
+                }
+            }
+        }
+        
+    </script>
+
+    <script>
+        // Wait for the DOM to be ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the success message exists
+            var successAlert = document.querySelector('.alert-success');
+            if (successAlert) {
+                // Hide the success message after 5 seconds (5000 milliseconds)
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Additionally, you can hide the alert when the user starts interacting with the form again
+            var fileInput = document.getElementById('file');
+            fileInput.addEventListener('change', function() {
+                if (successAlert) {
+                    successAlert.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
 
 
 

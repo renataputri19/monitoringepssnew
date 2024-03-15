@@ -46,12 +46,16 @@
                         </div>
                         <div class="form-group">
                             <label for="file">Upload file:</label>
-                            <input type="file" name="files[]" class="form-control" id="file" multiple required>
-                            @error('files.*')
-                                <div class="alert alert-danger mt-1">
-                                    <p> File Harus PDF and maks 10mb </p>
+                            <input type="file" name="files[]" class="form-control" id="file" multiple required onchange="validateFiles()">
+                            <div id="file-error" class="alert alert-danger mt-1" style="display: none;">
+                                <p>File Harus PDF dan Maksimal 10MB</p>
+                            </div>
+
+                            @if (session('success'))
+                                <div class="alert alert-success mt-1">
+                                    {{ session('success') }}
                                 </div>
-                            @enderror
+                            @endif
                         </div>
                         <input type="hidden" name="domain" value="kelembagaan">
                         <input type="hidden" name="aspek" value="Profesionalitas">

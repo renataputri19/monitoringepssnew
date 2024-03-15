@@ -11,9 +11,15 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
+        
+        
+
+        
         $request->validate([
             'files.*' => 'required|file|mimes:pdf|max:10240', // mimes:pdf ensures only PDF files are accepted and max:10240 limits the size to 10MB
         ]);
+
+        
     
         // Get the hidden fields
         $domain = $request->input('domain');
