@@ -77,8 +77,8 @@
                     return;
                 }
     
-                // Check if the file size is more than 10MB
-                if (file.size > 10 * 1024 * 1024) {
+                // Check if the file size is more than 3MB
+                if (file.size > 3 * 1024 * 1024) {
                     fileError.style.display = 'block'; // Show error message
                     fileInput.value = ''; // Reset file input
                     return;

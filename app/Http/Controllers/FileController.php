@@ -16,7 +16,7 @@ class FileController extends Controller
 
         
         $request->validate([
-            'files.*' => 'required|file|mimes:pdf|max:10240', // mimes:pdf ensures only PDF files are accepted and max:10240 limits the size to 10MB
+            'files.*' => 'required|file|mimes:pdf|max:3072', // mimes:pdf ensures only PDF files are accepted and max:3072 limits the size to 3MB
         ]);
 
         

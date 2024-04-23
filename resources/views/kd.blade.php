@@ -47,7 +47,7 @@
                             <label for="file">Upload file:</label>
                             <input type="file" name="files[]" class="form-control" id="file" multiple required onchange="validateFiles()">
                             <div id="file-error" class="alert alert-danger mt-1" style="display: none;">
-                                <p>File Harus PDF dan Maksimal 10MB</p>
+                                <p>File Harus PDF dan Maksimal 3MB</p>
                             </div>
 
                             @if (session('success'))
