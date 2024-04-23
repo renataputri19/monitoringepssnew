@@ -215,7 +215,7 @@ a {
 }
 
 .nav_space{
-    padding: 2em 0.2em 2em 0.2em;
+    padding: 0em 0.2em 2em 0.2em;
 }
 
 /* Media Queries */
@@ -226,7 +226,7 @@ a {
 
     .header {
         height: calc(var(--header-height) + 5rem);
-        padding: 5em 4rem 0.8em calc(var(--nav-width) + 2rem);
+        padding: 2.8em 4rem 0.8em calc(var(--nav-width) + 2rem);
     }
 
     .header_img {
