@@ -8,16 +8,16 @@ use App\Models\File;
 class KelembagaanController extends Controller
 {
     protected $indikatorTitles = [
-        'kelembagaan1' => 'Tingkat Kematangan Penjaminan Transparansi Informasi Statistik',
-        'kelembagaan2' => 'Tingkat Kematangan Penjaminan Netralitas dan Objektivitas terhadap Penggunaan Sumber Data dan Metodologi',
-        'kelembagaan3' => 'Tingkat Kematangan Penjaminan Kualitas Data',
-        'kelembagaan4' => 'Tingkat Kematangan Penjaminan Konfidensialitas Data',
-        'kelembagaan5' => 'Tingkat Kematangan Pemenuhan Kompetensi SDM Bidang Statistik',
-        'kelembagaan6' => 'Tingkat Kematangan Pemenuhan Kompetensi SDM Bidang Manajemen Data',
-        'kelembagaan7' => 'Tingkat Kematangan Kolaborasi Penyelenggaraan Kegiatan Statistik',
-        'kelembagaan8' => 'Tingkat Kematangan Penyelenggaraan Forum Satu Data Indonesia',
-        'kelembagaan9' => 'Tingkat Kematangan Kolaborasi dengan Pembina Data Statistik',
-        'kelembagaan10' => 'Tingkat Kematangan Pelaksanaan Tugas Sebagai Walidata'
+        'kelembagaan1' => '40101 Tingkat Kematangan Penjaminan Transparansi Informasi Statistik',
+        'kelembagaan2' => '40102 Tingkat Kematangan Penjaminan Netralitas dan Objektivitas terhadap Penggunaan Sumber Data dan Metodologi',
+        'kelembagaan3' => '40103 Tingkat Kematangan Penjaminan Kualitas Data',
+        'kelembagaan4' => '40104 Tingkat Kematangan Penjaminan Konfidensialitas Data',
+        'kelembagaan5' => '40201 Tingkat Kematangan Pemenuhan Kompetensi SDM Bidang Statistik',
+        'kelembagaan6' => '40202 Tingkat Kematangan Pemenuhan Kompetensi SDM Bidang Manajemen Data',
+        'kelembagaan7' => '40301 Tingkat Kematangan Kolaborasi Penyelenggaraan Kegiatan Statistik',
+        'kelembagaan8' => '40302 Tingkat Kematangan Penyelenggaraan Forum Satu Data Indonesia',
+        'kelembagaan9' => '40303 Tingkat Kematangan Kolaborasi dengan Pembina Data Statistik',
+        'kelembagaan10' => '40304 Tingkat Kematangan Pelaksanaan Tugas Sebagai Walidata'
     ];
 
     protected $tingkatTitles = [

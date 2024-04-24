@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 class KdController extends Controller
 {
     protected $indikatorTitles = [
-        'kd1' => 'Tingkat Kematangan Relevansi Data Terhadap Pengguna',
-        'kd2' => 'Tingkat Kematangan Proses Identifikasi Kebutuhan Data',
-        'kd3' => 'Tingkat Kematangan Penilaian Akurasi Data',
-        'kd4' => 'Tingkat Kematangan Penjaminan Aktualitas Data',
-        'kd5' => 'Tingkat Kematangan Pemantauan Ketepatan Waktu Diseminasi',
-        'kd6' => 'Tingkat Kematangan Ketersediaan Data untuk Pengguna Data',
-        'kd7' => 'Tingkat Kematangan Akses Media Penyebarluasan Data',
-        'kd8' => 'Tingkat Kematangan Penyediaan Format Data',
-        'kd9' => 'Tingkat Kematangan Keterbandingan Data',
-        'kd10' => 'Tingkat Kematangan Konsistensi Statistik'
+        'kd1' => '20101 Tingkat Kematangan Relevansi Data Terhadap Pengguna',
+        'kd2' => '20102 Tingkat Kematangan Proses Identifikasi Kebutuhan Data',
+        'kd3' => '20201 Tingkat Kematangan Penilaian Akurasi Data',
+        'kd4' => '20301 Tingkat Kematangan Penjaminan Aktualitas Data',
+        'kd5' => '20302 Tingkat Kematangan Pemantauan Ketepatan Waktu Diseminasi',
+        'kd6' => '20401 Tingkat Kematangan Ketersediaan Data untuk Pengguna Data',
+        'kd7' => '20402 Tingkat Kematangan Akses Media Penyebarluasan Data',
+        'kd8' => '20403 Tingkat Kematangan Penyediaan Format Data',
+        'kd9' => '20501 Tingkat Kematangan Keterbandingan Data',
+        'kd10' => '20502 Tingkat Kematangan Konsistensi Statistik'
     ];
 
     protected $tingkatTitles = [

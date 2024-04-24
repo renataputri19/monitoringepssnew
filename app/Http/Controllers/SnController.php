@@ -8,13 +8,13 @@ use App\Models\File;
 class SnController extends Controller
 {
     protected $indikatorTitles = [
-        'sn1' => 'Tingkat Kematangan Penggunaan Data Statistik Dasar untuk Perencanaan, Monitoring, dan Evaluasi, dan atau Penyusunan Kebijakan',
-        'sn2' => 'Tingkat Kematangan Penggunaan Data Statistik Sektoral untuk Perencanaan, Monitoring, dan Evaluasi, dan atau Penyusunan Kebijakan',
-        'sn3' => 'Tingkat Kematangan Sosialisasi dan Literasi Hasil Statistik',
-        'sn4' => 'Tingkat Kematangan Pelaksanaan Rekomendasi Kegiatan Statistik',
-        'sn5' => 'Tingkat Kematangan Perencanaan Pembangunan Statistik',
-        'sn6' => 'Tingkat Kematangan Penyebarluasan Data',
-        'sn7' => 'Tingkat Kematangan Pemanfaatan Big Data',
+        'sn1' => '50101 Tingkat Kematangan Penggunaan Data Statistik Dasar untuk Perencanaan, Monitoring, dan Evaluasi, dan atau Penyusunan Kebijakan',
+        'sn2' => '50102 Tingkat Kematangan Penggunaan Data Statistik Sektoral untuk Perencanaan, Monitoring, dan Evaluasi, dan atau Penyusunan Kebijakan',
+        'sn3' => '50103 Tingkat Kematangan Sosialisasi dan Literasi Hasil Statistik',
+        'sn4' => '50201 Tingkat Kematangan Pelaksanaan Rekomendasi Kegiatan Statistik',
+        'sn5' => '50301 Tingkat Kematangan Perencanaan Pembangunan Statistik',
+        'sn6' => '50302 Tingkat Kematangan Penyebarluasan Data',
+        'sn7' => '50303 Tingkat Kematangan Pemanfaatan Big Data',
     ];
 
     protected $tingkatTitles = [

@@ -8,13 +8,13 @@ use App\Models\File;
 class PbsController extends Controller
 {
     protected $indikatorTitles = [
-        'pbs1' => 'Tingkat Kematangan Pendefinisian Kebutuhan Statistik',
-        'pbs2' => 'Tingkat Kematangan Kematangan Desain Statistik',
-        'pbs3' => 'Tingkat Kematangan Penyiapan Instrumen',
-        'pbs4' => 'Tingkat Kematangan Proses Pengumpulan Data/Akuisisi Data',
-        'pbs5' => 'Tingkat Kematangan Pengolahan Data',
-        'pbs6' => 'Tingkat Kematangan Analisis Data',
-        'pbs7' => 'Tingkat Kematangan Diseminasi Data',
+        'pbs1' => '30101 Tingkat Kematangan Pendefinisian Kebutuhan Statistik',
+        'pbs2' => '30102 Tingkat Kematangan Kematangan Desain Statistik',
+        'pbs3' => '30103 Tingkat Kematangan Penyiapan Instrumen',
+        'pbs4' => '30201 Tingkat Kematangan Proses Pengumpulan Data/Akuisisi Data',
+        'pbs5' => '30301 Tingkat Kematangan Pengolahan Data',
+        'pbs6' => '30302 Tingkat Kematangan Analisis Data',
+        'pbs7' => '30401 Tingkat Kematangan Diseminasi Data',
     ];
 
     protected $tingkatTitles = [
