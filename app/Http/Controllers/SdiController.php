@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class SdiController extends Controller
 {
     protected $indikatorTitles = [
-        'sds1' => 'Tingkat Kematangan Penerapan Standar Data Statistik (SDS)',
-        'sds2' => 'Tingkat Kematangan Penerapan Metadata Statistik',
-        'sds3' => 'Tingkat Kematangan Penerapan Interoperabilitas Data',
-        'sds4' => 'Tingkat Kematangan Penerapan Kode Referensi',
+        'sds1' => '10101 Tingkat Kematangan Penerapan Standar Data Statistik (SDS)',
+        'sds2' => '10201 Tingkat Kematangan Penerapan Metadata Statistik',
+        'sds3' => '10301 Tingkat Kematangan Penerapan Interoperabilitas Data',
+        'sds4' => '10401 Tingkat Kematangan Penerapan Kode Referensi',
     ];
 
     protected $tingkatTitles = [

@@ -96,7 +96,7 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading{{ $accordionId }}">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $accordionId }}" aria-expanded="false" aria-controls="{{ $accordionId }}">
-                                    <h4>{{ $loop->parent->iteration }}. {{ $indikatorTitles[$indikator] ?? 'Unknown Title' }}</h4>
+                                    <h4> {{ $indikatorTitles[$indikator] ?? 'Unknown Title' }}</h4>
                                 </button>
                             </h2>
                             <div id="{{ $accordionId }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $accordionId }}" data-bs-parent="#accordionExample">
