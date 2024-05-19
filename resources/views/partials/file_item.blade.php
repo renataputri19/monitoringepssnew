@@ -16,7 +16,7 @@
                     <tbody>
                         @foreach($files as $file)
                             <tr>
-                                <td><a href="{{ asset('/storage/'.$file->filename) }}">Download File</a></td>
+                                <td><a href="{{ asset('/storage/'.$file->filename) }}">{{ basename($file->filename) }}</a></td>
                                 <td>
                                     @if($file->disetujui === null)
                                         Lagi Diperiksa
