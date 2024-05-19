@@ -14,15 +14,27 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         // Create two dummy users
+        // User::create([
+        //     'username' => 'tpb2171',
+        //     'password' => 'admintpb',
+        //     'admin' => true,
+        // ]);
+
+        // User::create([
+        //     'username' => 'walidata2171',
+        //     'password' => 'kominfo2171',
+        //     'admin' => false,
+        // ]);
+
         User::create([
-            'username' => 'tpb2171',
-            'password' => 'admintpb',
+            'username' => 'tpbadminepss2024',
+            'password' => 'tpbadminpassword',
             'admin' => true,
         ]);
 
         User::create([
-            'username' => 'walidata2171',
-            'password' => 'kominfo2171',
+            'username' => 'epss2024monita',
+            'password' => 'walidata2171',
             'admin' => false,
         ]);
 
